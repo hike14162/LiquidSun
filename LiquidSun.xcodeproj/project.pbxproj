@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5229B9302134A0F000FD4504 /* lsRESTServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5229B92F2134A0F000FD4504 /* lsRESTServices.swift */; };
+		528AD004212A35430094374E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD003212A35430094374E /* AppDelegate.swift */; };
+		528AD006212A35430094374E /* Sunshine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD005212A35430094374E /* Sunshine.swift */; };
+		528AD009212A35430094374E /* Sunshine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528AD007212A35430094374E /* Sunshine.storyboard */; };
+		528AD00B212A35460094374E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528AD00A212A35460094374E /* Assets.xcassets */; };
+		528AD00E212A35460094374E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528AD00C212A35460094374E /* LaunchScreen.storyboard */; };
+		528AD019212A35460094374E /* LiquidSunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD018212A35460094374E /* LiquidSunUITests.swift */; };
+		528AD024212A39830094374E /* lsWeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD023212A39830094374E /* lsWeatherReport.swift */; };
+		528AD026212A4EBE0094374E /* lsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD025212A4EBE0094374E /* lsHelper.swift */; };
+		528AD028212B6E820094374E /* lsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD027212B6E820094374E /* lsEnums.swift */; };
+		528AD02A212B83C30094374E /* lsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD029212B83C30094374E /* lsModel.swift */; };
+		528AD02C212C9C690094374E /* lsTrendTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD02B212C9C690094374E /* lsTrendTable.swift */; };
+		52F29A87212E1FF1008CBD56 /* artwork.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F29A86212E1FF1008CBD56 /* artwork.xcassets */; };
+		52F29A8B212F2C98008CBD56 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F29A89212F2C98008CBD56 /* Reachability.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		528AD015212A35460094374E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 528ACFF8212A35430094374E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 528ACFFF212A35430094374E;
+			remoteInfo = LiquidSun;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5229B92E2133735C00FD4504 /* LiquidSun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiquidSun.entitlements; sourceTree = "<group>"; };
+		5229B92F2134A0F000FD4504 /* lsRESTServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsRESTServices.swift; sourceTree = "<group>"; };
+		528AD000212A35430094374E /* LiquidSun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiquidSun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		528AD003212A35430094374E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		528AD005212A35430094374E /* Sunshine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sunshine.swift; sourceTree = "<group>"; };
+		528AD008212A35430094374E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sunshine.storyboard; sourceTree = "<group>"; };
+		528AD00A212A35460094374E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		528AD00D212A35460094374E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		528AD00F212A35460094374E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		528AD014212A35460094374E /* LiquidSunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiquidSunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		528AD018212A35460094374E /* LiquidSunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidSunUITests.swift; sourceTree = "<group>"; };
+		528AD01A212A35460094374E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		528AD023212A39830094374E /* lsWeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsWeatherReport.swift; sourceTree = "<group>"; };
+		528AD025212A4EBE0094374E /* lsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsHelper.swift; sourceTree = "<group>"; };
+		528AD027212B6E820094374E /* lsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsEnums.swift; sourceTree = "<group>"; };
+		528AD029212B83C30094374E /* lsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsModel.swift; sourceTree = "<group>"; };
+		528AD02B212C9C690094374E /* lsTrendTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsTrendTable.swift; sourceTree = "<group>"; };
+		52F29A86212E1FF1008CBD56 /* artwork.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = artwork.xcassets; sourceTree = "<group>"; };
+		52F29A88212F2C97008CBD56 /* LiquidSun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiquidSun-Bridging-Header.h"; sourceTree = "<group>"; };
+		52F29A89212F2C98008CBD56 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		52F29A8A212F2C98008CBD56 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		528ACFFD212A35430094374E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		528AD011212A35460094374E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		528ACFF7212A35430094374E = {
+			isa = PBXGroup;
+			children = (
+				528AD002212A35430094374E /* LiquidSun */,
+				528AD017212A35460094374E /* LiquidSunUITests */,
+				528AD001212A35430094374E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		528AD001212A35430094374E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				528AD000212A35430094374E /* LiquidSun.app */,
+				528AD014212A35460094374E /* LiquidSunUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		528AD002212A35430094374E /* LiquidSun */ = {
+			isa = PBXGroup;
+			children = (
+				528AD007212A35430094374E /* Sunshine.storyboard */,
+				528AD005212A35430094374E /* Sunshine.swift */,
+				528AD02B212C9C690094374E /* lsTrendTable.swift */,
+				528AD023212A39830094374E /* lsWeatherReport.swift */,
+				528AD027212B6E820094374E /* lsEnums.swift */,
+				528AD025212A4EBE0094374E /* lsHelper.swift */,
+				528AD029212B83C30094374E /* lsModel.swift */,
+				5229B92F2134A0F000FD4504 /* lsRESTServices.swift */,
+				528AD003212A35430094374E /* AppDelegate.swift */,
+				528AD00A212A35460094374E /* Assets.xcassets */,
+				52F29A86212E1FF1008CBD56 /* artwork.xcassets */,
+				52F29A8A212F2C98008CBD56 /* Reachability.h */,
+				52F29A89212F2C98008CBD56 /* Reachability.m */,
+				52F29A88212F2C97008CBD56 /* LiquidSun-Bridging-Header.h */,
+				528AD00C212A35460094374E /* LaunchScreen.storyboard */,
+				5229B92E2133735C00FD4504 /* LiquidSun.entitlements */,
+				528AD00F212A35460094374E /* Info.plist */,
+			);
+			path = LiquidSun;
+			sourceTree = "<group>";
+		};
+		528AD017212A35460094374E /* LiquidSunUITests */ = {
+			isa = PBXGroup;
+			children = (
+				528AD018212A35460094374E /* LiquidSunUITests.swift */,
+				528AD01A212A35460094374E /* Info.plist */,
+			);
+			path = LiquidSunUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		528ACFFF212A35430094374E /* LiquidSun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 528AD01D212A35460094374E /* Build configuration list for PBXNativeTarget "LiquidSun" */;
+			buildPhases = (
+				528ACFFC212A35430094374E /* Sources */,
+				528ACFFD212A35430094374E /* Frameworks */,
+				528ACFFE212A35430094374E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiquidSun;
+			productName = LiquidSun;
+			productReference = 528AD000212A35430094374E /* LiquidSun.app */;
+			productType = "com.apple.product-type.application";
+		};
+		528AD013212A35460094374E /* LiquidSunUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 528AD020212A35460094374E /* Build configuration list for PBXNativeTarget "LiquidSunUITests" */;
+			buildPhases = (
+				528AD010212A35460094374E /* Sources */,
+				528AD011212A35460094374E /* Frameworks */,
+				528AD012212A35460094374E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				528AD016212A35460094374E /* PBXTargetDependency */,
+			);
+			name = LiquidSunUITests;
+			productName = LiquidSunUITests;
+			productReference = 528AD014212A35460094374E /* LiquidSunUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		528ACFF8212A35430094374E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = TheCarrNation;
+				TargetAttributes = {
+					528ACFFF212A35430094374E = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+					528AD013212A35460094374E = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 528ACFFF212A35430094374E;
+					};
+				};
+			};
+			buildConfigurationList = 528ACFFB212A35430094374E /* Build configuration list for PBXProject "LiquidSun" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 528ACFF7212A35430094374E;
+			productRefGroup = 528AD001212A35430094374E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				528ACFFF212A35430094374E /* LiquidSun */,
+				528AD013212A35460094374E /* LiquidSunUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		528ACFFE212A35430094374E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				528AD00E212A35460094374E /* LaunchScreen.storyboard in Resources */,
+				528AD00B212A35460094374E /* Assets.xcassets in Resources */,
+				52F29A87212E1FF1008CBD56 /* artwork.xcassets in Resources */,
+				528AD009212A35430094374E /* Sunshine.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		528AD012212A35460094374E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		528ACFFC212A35430094374E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				528AD028212B6E820094374E /* lsEnums.swift in Sources */,
+				528AD026212A4EBE0094374E /* lsHelper.swift in Sources */,
+				52F29A8B212F2C98008CBD56 /* Reachability.m in Sources */,
+				528AD02A212B83C30094374E /* lsModel.swift in Sources */,
+				528AD006212A35430094374E /* Sunshine.swift in Sources */,
+				528AD024212A39830094374E /* lsWeatherReport.swift in Sources */,
+				528AD004212A35430094374E /* AppDelegate.swift in Sources */,
+				528AD02C212C9C690094374E /* lsTrendTable.swift in Sources */,
+				5229B9302134A0F000FD4504 /* lsRESTServices.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		528AD010212A35460094374E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				528AD019212A35460094374E /* LiquidSunUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		528AD016212A35460094374E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 528ACFFF212A35430094374E /* LiquidSun */;
+			targetProxy = 528AD015212A35460094374E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		528AD007212A35430094374E /* Sunshine.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				528AD008212A35430094374E /* Base */,
+			);
+			name = Sunshine.storyboard;
+			sourceTree = "<group>";
+		};
+		528AD00C212A35460094374E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				528AD00D212A35460094374E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		528AD01B212A35460094374E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		528AD01C212A35460094374E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		528AD01E212A35460094374E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46527JQ8T6;
+				INFOPLIST_FILE = LiquidSun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiquidSun/LiquidSun-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		528AD01F212A35460094374E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46527JQ8T6;
+				INFOPLIST_FILE = LiquidSun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiquidSun/LiquidSun-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		528AD021212A35460094374E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LiquidSunUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSunUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LiquidSun;
+			};
+			name = Debug;
+		};
+		528AD022212A35460094374E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LiquidSunUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSunUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LiquidSun;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		528ACFFB212A35430094374E /* Build configuration list for PBXProject "LiquidSun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				528AD01B212A35460094374E /* Debug */,
+				528AD01C212A35460094374E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		528AD01D212A35460094374E /* Build configuration list for PBXNativeTarget "LiquidSun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				528AD01E212A35460094374E /* Debug */,
+				528AD01F212A35460094374E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		528AD020212A35460094374E /* Build configuration list for PBXNativeTarget "LiquidSunUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				528AD021212A35460094374E /* Debug */,
+				528AD022212A35460094374E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 528ACFF8212A35430094374E /* Project object */;
+}
