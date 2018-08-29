@@ -91,7 +91,6 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
             webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -3))
             webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -4))
             webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -5))
-            
         } else {
             loadLabel.text = "Searching for a network connection..."
             
@@ -231,6 +230,8 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         currentSunriseLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunriseTime))"
         
         trendTable.reloadData()
+        
+        webSvcs.track(id: lsData.getID(), city: lsData.city, state: lsData.state, longitude: lsData.longitude, latitude: lsData.latitude, datetime: "\(Int32(Date().timeIntervalSince1970))" )
     }
     
     
@@ -244,6 +245,8 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
                 
                 if (placemarks?.count)! > 0 {
                     let pm = placemarks![0] as CLPlacemark
+                    self.lsData.city = pm.locality ?? ""
+                    self.lsData.state = pm.administrativeArea ?? ""
                     self.title = "\(pm.locality ?? ""), \(pm.administrativeArea ?? "")"
                     self.loadLabel.text = "Retrieving weather data for \(pm.locality ?? ""), \(pm.administrativeArea ?? "")"
                 } else {
@@ -260,6 +263,8 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
             longitude = coord.longitude
             latitude = coord.latitude
             let currentLoc: CLLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
+            lsData.longitude = "\(currentLoc.coordinate.longitude)"
+            lsData.latitude = "\(currentLoc.coordinate.latitude)"
             getWeather(longitude: "\(currentLoc.coordinate.longitude)", latitude: "\(currentLoc.coordinate.latitude)", weekView: true)
         }
     }

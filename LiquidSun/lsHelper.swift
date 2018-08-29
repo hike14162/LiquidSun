@@ -97,4 +97,8 @@ open class lsHelper {
         view.present(alert, animated: true, completion: nil)
     }
 
+    open class func getGUID() -> String {
+        return UUID().uuidString
+    }
+
 }

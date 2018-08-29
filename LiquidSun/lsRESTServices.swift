@@ -2,8 +2,37 @@ import Foundation
 
 class lsRESTServices
 {
-    func getWeatherHistory(longitude: String, latitude: String, date: Date)
-    {
+    func track(id: String, city: String, state: String, longitude: String, latitude: String, datetime: String) {
+        // Create jsone Data
+        let log: [String: Any] = ["ID":"\(id)", "City":"\(city)", "State":"\(state)", "Longitude":"\(longitude)", "Latitude":"\(latitude)", "DateTime":"\(datetime)"]
+        let json: [String: Any] = ["value": log]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //****
+
+        let urlString = "https://epgateway.envelopeplusapp.com/weather/WeatherLog.svc/log"
+        guard let url = URL(string: urlString) else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            if let data = data {
+                let responseStr:NSString = NSString(data:data as Data, encoding:String.Encoding.utf8.rawValue)!
+                DispatchQueue.main.async {
+                }
+            }
+            
+            }.resume()
+
+    }
+    
+    func getWeatherHistory(longitude: String, latitude: String, date: Date) {
         let urlString = "https://api.darksky.net/forecast/0af818c07d981c24834f044aa8609ac5/\(latitude),\(longitude),\(Int32(date.timeIntervalSince1970))"
         guard let url = URL(string: urlString) else { return }
         

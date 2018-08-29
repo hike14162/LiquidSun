@@ -44,4 +44,6 @@ class lsWeatherReport {
         sunsetTime = Date(timeIntervalSince1970: Double((json["sunsetTime"] as? Double) ?? 0.0))
 
     }
+    
+
 }

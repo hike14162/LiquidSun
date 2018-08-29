@@ -7,7 +7,24 @@ open class lsModel {
     }
 
     var hMode: HistoryMode = .years
-
+    
+    var city: String = ""
+    var state: String = ""
+    var longitude: String = ""
+    var latitude: String = ""
+    var datetime: String = ""
+    
+    func setID() -> String  {
+        let id = lsHelper.getGUID()
+        UserDefaults.standard.set(id, forKey: "instID")
+        return id
+    }
+    
+    func getID() -> String {
+        let id = UserDefaults.standard.object(forKey: "instID") as? String ?? setID()
+        return id
+    }
+    
     var weatherDays: [lsWeatherReport] = []
     func addWeatherDay(weather: lsWeatherReport) {
         weatherDays.append(weather)
