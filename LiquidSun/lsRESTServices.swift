@@ -23,9 +23,7 @@ class lsRESTServices
             }
             
             if let data = data {
-                let responseStr:NSString = NSString(data:data as Data, encoding:String.Encoding.utf8.rawValue)!
-                DispatchQueue.main.async {
-                }
+                print(NSString(data:data as Data, encoding:String.Encoding.utf8.rawValue) ?? "")
             }
             
             }.resume()
