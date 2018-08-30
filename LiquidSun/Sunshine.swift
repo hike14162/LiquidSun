@@ -47,6 +47,7 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = (lsHelper.getTitleBarAttributes() as! [NSAttributedStringKey : Any])
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.weatherDayAdd(_:)), name: NSNotification.Name(rawValue: "weatherDayAdd"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 
         if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse)  {
             locationManager.delegate = self
@@ -58,13 +59,6 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         else {
             loadLabel.text = "Unable to access your location.  Please enable location services in Settings."
             loadingIndicator.isHidden = true
-        }
-        
-        // code to account for SE width
-        if UIScreen.main.nativeBounds.width < 700 {
-            windLeadingEdge.constant = 55
-            dewPointLeadingEdge.constant = 60
-            visibilityLeadingEdge.constant = 60
         }
     }
     
@@ -152,8 +146,7 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         currentSunsetCoverLabel.text = "N/A"
         currentSunriseLabel.text = "N/A"
         
-        trendTable.reloadData()
-        
+        adjustSEConstraints()
     }
     
     func populateScreen() {
@@ -229,9 +222,9 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         currentSunsetCoverLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunsetTime))"
         currentSunriseLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunriseTime))"
         
-        trendTable.reloadData()
-        
         webSvcs.track(id: lsData.getID(), city: lsData.city, state: lsData.state, longitude: lsData.longitude, latitude: lsData.latitude, datetime: "\(Int32(Date().timeIntervalSince1970))" )
+        
+        adjustSEConstraints()
     }
     
     
@@ -269,6 +262,16 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
+    @objc func adjustSEConstraints()
+    {
+        // code to account for SE width
+        if UIScreen.main.nativeBounds.width < 700 {
+            windLeadingEdge.constant = 55
+            dewPointLeadingEdge.constant = 55
+            visibilityLeadingEdge.constant = 50
+        }
+        trendTable.reloadData()
+    }
+
 }
 

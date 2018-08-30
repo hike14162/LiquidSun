@@ -22,11 +22,11 @@ class lsTrendTable: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 26
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let rect = CGRect(x: 5, y: 14, width: 275, height: 22)
+        let rect = CGRect(x: 5, y: 5, width: 275, height: 22)
         let headerLabel = UILabel(frame: rect)
         
         headerLabel.textColor = UIColor.white
