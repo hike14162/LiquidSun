@@ -49,17 +49,11 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.weatherDayAdd(_:)), name: NSNotification.Name(rawValue: "weatherDayAdd"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 
-        if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse)  {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-            locationChecked = false
-            locationManager.startUpdatingLocation()
-        }
-        else {
-            loadLabel.text = "Unable to access your location.  Please enable location services in Settings."
-            loadingIndicator.isHidden = true
-        }
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationChecked = false
+        locationManager.startUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,11 +109,7 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
     
     @objc func foregroundEntered(_ notification: Notification) {
         locationChecked = false
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        } else {
-            lsHelper.showAlertMessage(view: self, title: "Location Not Available", message: "Liquid Sun needs your current location to get current weather.")
-        }
+        locationManager.startUpdatingLocation()
     }
     
     func resetScreen() {
@@ -227,7 +217,17 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         adjustSEConstraints()
     }
     
-    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .denied {
+            loadingView.isHidden = false
+            loadLabel.text = "Unable to access your location.  Please enable location services in Settings."
+            loadingIndicator.isHidden = true
+        } else {
+            loadLabel.text = "Retrieving weather data"
+            loadingIndicator.isHidden = false
+        }
+    }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         if (!locationChecked) {

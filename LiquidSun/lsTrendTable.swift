@@ -68,7 +68,7 @@ class lsTrendTable: UITableViewController {
             } else if (lsData.weatherDays[indexPath.row+1].temperature > lsData.weatherDays[0].temperature) {
                 cell?.tempLabel.textColor =  lsHelper.redColor()
             } else if (lsData.weatherDays[indexPath.row+1].temperature == lsData.weatherDays[0].temperature) {
-                cell?.tempLabel.textColor = .black
+                cell?.tempLabel.textColor = .white
             }
             cell?.tempLabel.text! = "\(lsHelper.doubleToString(lsData.weatherDays[indexPath.row+1].temperature,decimalPlaces: 1))\u{00B0}"
             cell?.summaryTempLabel.text! = "\(lsData.weatherDays[indexPath.row+1].summary)"
