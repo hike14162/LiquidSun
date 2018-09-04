@@ -13,7 +13,6 @@
 		528AD009212A35430094374E /* Sunshine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528AD007212A35430094374E /* Sunshine.storyboard */; };
 		528AD00B212A35460094374E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528AD00A212A35460094374E /* Assets.xcassets */; };
 		528AD00E212A35460094374E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528AD00C212A35460094374E /* LaunchScreen.storyboard */; };
-		528AD019212A35460094374E /* LiquidSunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD018212A35460094374E /* LiquidSunUITests.swift */; };
 		528AD024212A39830094374E /* lsWeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD023212A39830094374E /* lsWeatherReport.swift */; };
 		528AD026212A4EBE0094374E /* lsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD025212A4EBE0094374E /* lsHelper.swift */; };
 		528AD028212B6E820094374E /* lsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD027212B6E820094374E /* lsEnums.swift */; };
@@ -22,16 +21,6 @@
 		52F29A87212E1FF1008CBD56 /* artwork.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F29A86212E1FF1008CBD56 /* artwork.xcassets */; };
 		52F29A8B212F2C98008CBD56 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F29A89212F2C98008CBD56 /* Reachability.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		528AD015212A35460094374E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 528ACFF8212A35430094374E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 528ACFFF212A35430094374E;
-			remoteInfo = LiquidSun;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5229B92E2133735C00FD4504 /* LiquidSun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiquidSun.entitlements; sourceTree = "<group>"; };
@@ -43,9 +32,6 @@
 		528AD00A212A35460094374E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528AD00D212A35460094374E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		528AD00F212A35460094374E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		528AD014212A35460094374E /* LiquidSunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiquidSunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		528AD018212A35460094374E /* LiquidSunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidSunUITests.swift; sourceTree = "<group>"; };
-		528AD01A212A35460094374E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		528AD023212A39830094374E /* lsWeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsWeatherReport.swift; sourceTree = "<group>"; };
 		528AD025212A4EBE0094374E /* lsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsHelper.swift; sourceTree = "<group>"; };
 		528AD027212B6E820094374E /* lsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsEnums.swift; sourceTree = "<group>"; };
@@ -65,13 +51,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		528AD011212A35460094374E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				528AD002212A35430094374E /* LiquidSun */,
-				528AD017212A35460094374E /* LiquidSunUITests */,
 				528AD001212A35430094374E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				528AD000212A35430094374E /* LiquidSun.app */,
-				528AD014212A35460094374E /* LiquidSunUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,15 +94,6 @@
 			path = LiquidSun;
 			sourceTree = "<group>";
 		};
-		528AD017212A35460094374E /* LiquidSunUITests */ = {
-			isa = PBXGroup;
-			children = (
-				528AD018212A35460094374E /* LiquidSunUITests.swift */,
-				528AD01A212A35460094374E /* Info.plist */,
-			);
-			path = LiquidSunUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,24 +113,6 @@
 			productName = LiquidSun;
 			productReference = 528AD000212A35430094374E /* LiquidSun.app */;
 			productType = "com.apple.product-type.application";
-		};
-		528AD013212A35460094374E /* LiquidSunUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 528AD020212A35460094374E /* Build configuration list for PBXNativeTarget "LiquidSunUITests" */;
-			buildPhases = (
-				528AD010212A35460094374E /* Sources */,
-				528AD011212A35460094374E /* Frameworks */,
-				528AD012212A35460094374E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				528AD016212A35460094374E /* PBXTargetDependency */,
-			);
-			name = LiquidSunUITests;
-			productName = LiquidSunUITests;
-			productReference = 528AD014212A35460094374E /* LiquidSunUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -186,10 +136,6 @@
 							};
 						};
 					};
-					528AD013212A35460094374E = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 528ACFFF212A35430094374E;
-					};
 				};
 			};
 			buildConfigurationList = 528ACFFB212A35430094374E /* Build configuration list for PBXProject "LiquidSun" */;
@@ -206,7 +152,6 @@
 			projectRoot = "";
 			targets = (
 				528ACFFF212A35430094374E /* LiquidSun */,
-				528AD013212A35460094374E /* LiquidSunUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -220,13 +165,6 @@
 				528AD00B212A35460094374E /* Assets.xcassets in Resources */,
 				52F29A87212E1FF1008CBD56 /* artwork.xcassets in Resources */,
 				528AD009212A35430094374E /* Sunshine.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		528AD012212A35460094374E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,23 +187,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		528AD010212A35460094374E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				528AD019212A35460094374E /* LiquidSunUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		528AD016212A35460094374E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 528ACFFF212A35430094374E /* LiquidSun */;
-			targetProxy = 528AD015212A35460094374E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		528AD007212A35430094374E /* Sunshine.storyboard */ = {
@@ -446,44 +368,6 @@
 			};
 			name = Release;
 		};
-		528AD021212A35460094374E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = LiquidSunUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSunUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LiquidSun;
-			};
-			name = Debug;
-		};
-		528AD022212A35460094374E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = LiquidSunUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSunUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LiquidSun;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -501,15 +385,6 @@
 			buildConfigurations = (
 				528AD01E212A35460094374E /* Debug */,
 				528AD01F212A35460094374E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		528AD020212A35460094374E /* Build configuration list for PBXNativeTarget "LiquidSunUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				528AD021212A35460094374E /* Debug */,
-				528AD022212A35460094374E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
