@@ -73,13 +73,10 @@
 		528AD002212A35430094374E /* LiquidSun */ = {
 			isa = PBXGroup;
 			children = (
-				528AD007212A35430094374E /* Sunshine.storyboard */,
-				528AD005212A35430094374E /* Sunshine.swift */,
-				528AD02B212C9C690094374E /* lsTrendTable.swift */,
-				528AD023212A39830094374E /* lsWeatherReport.swift */,
-				528AD027212B6E820094374E /* lsEnums.swift */,
+				52A1DB94213F046A00B7B904 /* Views */,
+				52A1DB93213F045A00B7B904 /* Controllers */,
+				52A1DB92213F044B00B7B904 /* Models */,
 				528AD025212A4EBE0094374E /* lsHelper.swift */,
-				528AD029212B83C30094374E /* lsModel.swift */,
 				5229B92F2134A0F000FD4504 /* lsRESTServices.swift */,
 				528AD003212A35430094374E /* AppDelegate.swift */,
 				528AD00A212A35460094374E /* Assets.xcassets */,
@@ -87,11 +84,38 @@
 				52F29A8A212F2C98008CBD56 /* Reachability.h */,
 				52F29A89212F2C98008CBD56 /* Reachability.m */,
 				52F29A88212F2C97008CBD56 /* LiquidSun-Bridging-Header.h */,
-				528AD00C212A35460094374E /* LaunchScreen.storyboard */,
 				5229B92E2133735C00FD4504 /* LiquidSun.entitlements */,
 				528AD00F212A35460094374E /* Info.plist */,
 			);
 			path = LiquidSun;
+			sourceTree = "<group>";
+		};
+		52A1DB92213F044B00B7B904 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				528AD029212B83C30094374E /* lsModel.swift */,
+				528AD023212A39830094374E /* lsWeatherReport.swift */,
+				528AD027212B6E820094374E /* lsEnums.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52A1DB93213F045A00B7B904 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				528AD005212A35430094374E /* Sunshine.swift */,
+				528AD02B212C9C690094374E /* lsTrendTable.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		52A1DB94213F046A00B7B904 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				528AD007212A35430094374E /* Sunshine.storyboard */,
+				528AD00C212A35460094374E /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

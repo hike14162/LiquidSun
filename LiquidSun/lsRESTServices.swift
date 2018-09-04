@@ -63,7 +63,6 @@ class lsRESTServices
                                 DispatchQueue.main.async {
                                     NotificationCenter.default.post(name: Notification.Name(rawValue: "weatherDayAdd"), object:currentObj)
 
-//                                    }
                                 }
                             }
                         }
