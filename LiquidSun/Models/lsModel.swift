@@ -1,4 +1,5 @@
 import Foundation
+import MapKit
 
 private let _ModelSingletonSharedInstance = lsModel()
 open class lsModel {
@@ -13,6 +14,9 @@ open class lsModel {
     var longitude: String = ""
     var latitude: String = ""
     var datetime: String = ""
+    var searchItems: [MKLocalSearchCompletion] = []
+
+    var inSearchMode: Bool = false
     
     func setID() -> String  {
         let id = lsHelper.getGUID()

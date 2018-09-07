@@ -5,14 +5,6 @@ class lsTrendTable: UITableViewController {
     
     var lsData = lsModel.sharedInstance
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -16,8 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         iNetReach = Reachability.forInternetConnection()
         iNetReach?.startNotifier()
-        if (iNetReach != nil)
-        {
+        if (iNetReach != nil) {
             self.statusChangedWithReachability(iNetReach!)
         }
         

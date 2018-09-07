@@ -3,7 +3,11 @@ import UIKit
 import CoreLocation
 
 open class lsHelper {
-    
+    open class func isiPad() -> Bool
+    {
+        return (UIDevice.current.userInterfaceIdiom == .pad)
+    }
+
     open class func DateToTimeString(_ date: Date)-> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mma"
@@ -74,10 +78,16 @@ open class lsHelper {
         return UIColor(red: 0.9333, green: 0.5647, blue: 0.5742, alpha: 1)
     }
 
-    open class func getTitleBarAttributes() -> NSDictionary {
+    open class func getTitleBarAttributes(light: Bool) -> NSDictionary {
         let shadow = NSShadow()
-        shadow.shadowColor = UIColor.clear        
-        return NSDictionary(objects: [UIColor.white, shadow, UIFont(name: "Apple SD Gothic Neo", size: 20.0)!], forKeys: [NSAttributedStringKey.foregroundColor  as NSCopying, NSAttributedStringKey.shadow as NSCopying, NSAttributedStringKey.font as NSCopying])
+        shadow.shadowColor = UIColor.clear
+        var foreColor = UIColor.white
+        
+        if (light) {
+            foreColor = darkBlueColor()
+        }
+        return NSDictionary(objects: [foreColor, shadow, UIFont(name: "Apple SD Gothic Neo", size: 20.0)!], forKeys: [NSAttributedStringKey.foregroundColor as NSCopying, NSAttributedStringKey.shadow as NSCopying, NSAttributedStringKey.font as NSCopying])
+
     }
 
     open class func doubleToString(_ num: Double, decimalPlaces: Int) -> String {

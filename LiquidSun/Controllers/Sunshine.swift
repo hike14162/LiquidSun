@@ -1,15 +1,7 @@
 import UIKit
 import CoreLocation
 
-class Sunshine: UIViewController, CLLocationManagerDelegate {
-    var lsData = lsModel.sharedInstance
-    var locationManager: CLLocationManager = CLLocationManager()
-    var latitude: CLLocationDegrees = 0
-    var longitude: CLLocationDegrees = 0
-    var locationChecked: Bool = false
-    var displayCnt = 0
-    var webSvcs: lsRESTServices = lsRESTServices()
-    
+class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadLabel: UILabel!
@@ -37,6 +29,23 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dewPointLeadingEdge: NSLayoutConstraint!
     @IBOutlet weak var visibilityLeadingEdge: NSLayoutConstraint!
     
+    @IBAction func gotoCurrentTap(_ sender: Any) {
+        lsData.inSearchMode = false
+        reAquireWeather()
+    }
+    
+    @IBAction func creditTap(_ sender: Any) {
+        if let url = URL(string: "https://darksky.net/poweredby/") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+
+    var lsData = lsModel.sharedInstance
+    var locationManager: CLLocationManager = CLLocationManager()
+    var locationChecked: Bool = false
+    var displayCnt = 0
+    var webSvcs: lsRESTServices = lsRESTServices()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +53,8 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         loadingIndicator.isHidden = false
         loadingView.isHidden = false
 
-        self.navigationController?.navigationBar.titleTextAttributes = (lsHelper.getTitleBarAttributes() as! [NSAttributedStringKey : Any])
+        self.navigationController?.navigationBar.titleTextAttributes = (lsHelper.getTitleBarAttributes(light: false) as! [NSAttributedStringKey : Any])
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.weatherDayAdd(_:)), name: NSNotification.Name(rawValue: "weatherDayAdd"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -62,15 +72,11 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         resetScreen()
     }
     
-    @IBAction func creditTap(_ sender: Any) {
-        if let url = URL(string: "https://darksky.net/poweredby/") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
-    }
-    
-
-    func getWeather(longitude: String, latitude: String, weekView: Bool) {
+    func getWeather(longitude: String, latitude: String) {
         resetScreen()
+        lsData.longitude = longitude
+        lsData.latitude = latitude
+        
         if (reachabilityStatus != 0) {
             displayCnt = 6
             webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: 0))
@@ -82,14 +88,14 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         } else {
             loadLabel.text = "Searching for a network connection..."
             
-            let nwTimer = Timer(timeInterval: 1.0, target: self, selector:#selector(self.onRetryTick(_:)), userInfo: nil, repeats: true)
+            let nwTimer = Timer(timeInterval: 1.0, target: self, selector:#selector(self.onNetworkRetryTick(_:)), userInfo: nil, repeats: true)
             RunLoop.main.add(nwTimer, forMode: RunLoopMode.defaultRunLoopMode)
         }
         
     }
     
 
-    @objc func onRetryTick(_ timer: Timer) {
+    @objc func onNetworkRetryTick(_ timer: Timer) {
         if (reachabilityStatus != 0) {
             timer.invalidate()
             locationChecked = false
@@ -98,7 +104,8 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
+
+    // Notification Handlers
     @objc func weatherDayAdd(_ notification: Notification) {
         let newDayObj = notification.object as! lsWeatherReport
         lsData.addWeatherDay(weather: newDayObj)
@@ -108,8 +115,29 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func foregroundEntered(_ notification: Notification) {
-        locationChecked = false
-        locationManager.startUpdatingLocation()
+        reAquireWeather()
+    }
+    
+    @objc func adjustSEConstraints()
+    {
+        // code to account for SE width
+        if UIScreen.main.nativeBounds.width < 700 {
+            windLeadingEdge.constant = 55
+            dewPointLeadingEdge.constant = 55
+            visibilityLeadingEdge.constant = 50
+        }
+        trendTable.reloadData()
+    }
+    
+    func reAquireWeather() {
+        if (lsData.inSearchMode){
+            self.title = "\(lsData.city), \(lsData.state)"
+            self.loadLabel.text = "Retrieving weather data for \(lsData.city), \(lsData.state)"
+            getWeather(longitude: lsData.longitude, latitude: lsData.latitude)
+        } else {
+            locationChecked = false
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func resetScreen() {
@@ -217,6 +245,7 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
         adjustSEConstraints()
     }
     
+    //location delegate methods
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied {
             loadingView.isHidden = false
@@ -253,25 +282,31 @@ class Sunshine: UIViewController, CLLocationManagerDelegate {
             let locationObj = locationArray.lastObject as! CLLocation
             let coord = locationObj.coordinate
             
-            longitude = coord.longitude
-            latitude = coord.latitude
             let currentLoc: CLLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
             lsData.longitude = "\(currentLoc.coordinate.longitude)"
             lsData.latitude = "\(currentLoc.coordinate.latitude)"
-            getWeather(longitude: "\(currentLoc.coordinate.longitude)", latitude: "\(currentLoc.coordinate.latitude)", weekView: true)
+            getWeather(longitude: "\(currentLoc.coordinate.longitude)", latitude: "\(currentLoc.coordinate.latitude)")
         }
     }
     
-    @objc func adjustSEConstraints()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // code to account for SE width
-        if UIScreen.main.nativeBounds.width < 700 {
-            windLeadingEdge.constant = 55
-            dewPointLeadingEdge.constant = 55
-            visibilityLeadingEdge.constant = 50
+        if segue.identifier == "searchSegue" {
+            let destNav = segue.destination as! UINavigationController
+            let destCont = destNav.viewControllers[0] as! lsSearchResultsView
+            destCont.delegate = self
         }
-        trendTable.reloadData()
     }
 
+    func searchLocationSelected(longitude: String, latitude: String, city: String, state: String) {
+        lsData.longitude = longitude
+        lsData.latitude = latitude
+        lsData.city = city
+        lsData.state = state
+        
+        getWeather(longitude: longitude, latitude: latitude)
+        self.title = "\(city), \(state)"
+        self.loadLabel.text = "Retrieving weather data for \(city), \(state)"
+    }
 }
 

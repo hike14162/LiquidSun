@@ -29,19 +29,18 @@ class lsRESTServices
             }.resume()
 
     }
-    
+
     func getWeatherHistory(longitude: String, latitude: String, date: Date) {
-        let urlString = "https://api.darksky.net/forecast/0af818c07d981c24834f044aa8609ac5/\(latitude),\(longitude),\(Int32(date.timeIntervalSince1970))"
+        let urlString = "https://api.darksky.net/forecast/0af818c07d981c24834f044aa8609ac5/\(latitude),\(longitude),\(Int32(date.timeIntervalSince1970))?exclude=minutely,hourly,alerts"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
-            
             if let data = data {
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {                        
                         if let result = json["currently"] as? [String: Any] {
                             if let currentObj = try? lsWeatherReport(json: result) {
                                 
