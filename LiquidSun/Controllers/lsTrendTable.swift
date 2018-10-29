@@ -50,11 +50,7 @@ class lsTrendTable: UITableViewController {
         
         //Set the cell values
         if ((indexPath.row+1) <= lsData.weatherDays.count) {
-            if lsData.hMode == .days {
-                cell?.trendDateLabel.text! = "\(lsHelper.DateToDayString(lsData.weatherDays[indexPath.row+1].time))"
-            } else {
-                cell?.trendDateLabel.text! = "\(lsHelper.DateToYearString(lsData.weatherDays[indexPath.row+1].time))"
-            }
+            cell?.trendDateLabel.text! = "\(lsHelper.DateToYearString(lsData.weatherDays[indexPath.row+1].time))"
             if (lsData.weatherDays[indexPath.row+1].temperature < lsData.weatherDays[0].temperature) {
                 cell?.tempLabel.textColor = lsHelper.lightBlueColor()
             } else if (lsData.weatherDays[indexPath.row+1].temperature > lsData.weatherDays[0].temperature) {

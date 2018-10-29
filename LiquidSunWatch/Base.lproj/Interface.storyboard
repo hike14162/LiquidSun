@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch44" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
+    </dependencies>
+    <scenes>
+        <!--Lsw Main View Cont-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="lswMainViewCont" customModule="LiquidSunWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="10" id="PTg-OS-yMW">
+                            <items>
+                                <table alignment="left" id="Z2U-zb-JfI">
+                                    <items>
+                                        <tableRow identifier="lswCurrentCell" selectable="NO" id="DDe-po-grx" customClass="lswCurrentCell" customModule="LiquidSunWatch_Extension">
+                                            <group key="rootItem" width="1" height="130" alignment="left" layout="vertical" radius="6" spacing="0.0" id="bQF-dX-h0l">
+                                                <items>
+                                                    <group width="1" height="18" alignment="left" id="zEl-JE-5fr">
+                                                        <items>
+                                                            <label alignment="left" id="mUz-aP-sMJ">
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                            </label>
+                                                        </items>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="8"/>
+                                                    </group>
+                                                    <group width="1" alignment="left" id="Pe7-0B-5cU">
+                                                        <items>
+                                                            <imageView width="50" height="50" alignment="center" verticalAlignment="center" image="sunny" id="I1K-Ce-O06"/>
+                                                            <group width="115" alignment="right" layout="vertical" id="FW4-gN-NnQ">
+                                                                <items>
+                                                                    <label width="1" height="34" alignment="center" text="68.0°" textAlignment="center" id="Zda-85-8Um">
+                                                                        <color key="textColor" red="0.97254901959999995" green="0.64705882349999999" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
+                                                                    </label>
+                                                                    <label width="65" height="13" alignment="center" text="Feels 104°" textAlignment="center" minimumScaleFactor="0.20000000000000001" id="MTc-Ap-RFf">
+                                                                        <color key="textColor" red="0.81176470590000005" green="0.79607843140000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                                    </label>
+                                                                </items>
+                                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="5"/>
+                                                                <variation key="device=watch38mm" width="83"/>
+                                                                <variation key="device=watch40mm" width="108"/>
+                                                                <variation key="device=watch42mm" width="103"/>
+                                                            </group>
+                                                        </items>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="8"/>
+                                                    </group>
+                                                    <label alignment="left" text="1.3 mph - SW" id="eQT-HI-FIr">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                    </label>
+                                                    <label alignment="left" text="Gust 14.5 mph" id="tZQ-eE-TSb">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                <variation key="device=watch44mm">
+                                                    <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="0.0"/>
+                                                </variation>
+                                            </group>
+                                            <connections>
+                                                <outlet property="imgCurrent" destination="I1K-Ce-O06" id="Jc0-z4-FOR"/>
+                                                <outlet property="lblCurrentCityState" destination="mUz-aP-sMJ" id="6I6-uz-hwa"/>
+                                                <outlet property="lblCurrentFeels" destination="MTc-Ap-RFf" id="r0b-GI-kdS"/>
+                                                <outlet property="lblCurrentGust" destination="tZQ-eE-TSb" id="IlQ-2e-twQ"/>
+                                                <outlet property="lblCurrentTemp" destination="Zda-85-8Um" id="GYI-a3-QFA"/>
+                                                <outlet property="lblCurrentWind" destination="eQT-HI-FIr" id="Yy0-B0-TgX"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                                <table alignment="left" id="rM0-vk-2Tz">
+                                    <items>
+                                        <tableRow identifier="lswPastCell" selectable="NO" id="5fz-hq-f4R" customClass="lswPastCell" customModule="LiquidSunWatch_Extension">
+                                            <group key="rootItem" width="1" height="30" alignment="left" radius="4" spacing="0.0" id="yyo-XZ-VzM">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="2017" id="bjN-1j-uF0">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                    <imageView width="25" height="25" alignment="center" verticalAlignment="center" image="cloudy" id="Vsw-Tl-MTq"/>
+                                                    <label alignment="right" verticalAlignment="center" text="109°" id="Gdy-dh-H88">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" white="1" alpha="0.33462591240875911" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <edgeInsets key="margins" left="10" right="10" top="0.0" bottom="0.0"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="imgPastConditions" destination="Vsw-Tl-MTq" id="ZTh-QF-bGR"/>
+                                                <outlet property="lblPastTemp" destination="Gdy-dh-H88" id="VM7-2L-BIP"/>
+                                                <outlet property="lblPastYear" destination="bjN-1j-uF0" id="JXa-Lz-cbP"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </group>
+                        <button alignment="left" hidden="YES" id="b7u-YD-Onb">
+                            <group key="contentGroup" width="1" alignment="left" layout="vertical" id="ca6-Ay-rrn">
+                                <items>
+                                    <label alignment="center" text="Taking a peek" id="961-qf-U5t">
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                    </label>
+                                    <group width="21" height="25" alignment="center" verticalAlignment="center" id="CeT-1y-oQ3"/>
+                                    <label alignment="center" verticalAlignment="center" text="outside..." id="je8-56-SX9">
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                    </label>
+                                </items>
+                                <edgeInsets key="margins" left="5" right="0.0" top="45" bottom="0.0"/>
+                            </group>
+                            <connections>
+                                <action selector="retryTap" destination="AgC-eL-Hgc" id="mHe-Y6-vr8"/>
+                            </connections>
+                        </button>
+                        <group width="1" alignment="left" hidden="YES" id="yLD-XY-j2R">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Cannot reach iPhone" id="gWt-6o-QLS">
+                                    <variation key="device=watch38mm">
+                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                    </variation>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="currentTable" destination="Z2U-zb-JfI" id="YH4-yk-q7D"/>
+                        <outlet property="iPhoneMessage" destination="yLD-XY-j2R" id="dVk-2b-ZmR"/>
+                        <outlet property="loadingSpinAnim" destination="CeT-1y-oQ3" id="P9W-i9-Di6"/>
+                        <outlet property="pastTable" destination="rM0-vk-2Tz" id="pDP-Fz-UNy"/>
+                        <outlet property="progressButton" destination="b7u-YD-Onb" id="moK-6c-tmg"/>
+                        <outlet property="weatherGroup" destination="PTg-OS-yMW" id="M4h-ND-WsQ"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>

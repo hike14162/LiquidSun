@@ -1,21 +1,21 @@
 import Foundation
-import MapKit
 
 private let _ModelSingletonSharedInstance = lsModel()
 open class lsModel {
     open class var sharedInstance : lsModel {
         return _ModelSingletonSharedInstance
     }
-
-    var hMode: HistoryMode = .years
     
     var city: String = ""
     var state: String = ""
     var longitude: String = ""
     var latitude: String = ""
     var datetime: String = ""
-    var searchItems: [MKLocalSearchCompletion] = []
-
+    var weatherLocationString = ""
+    
+    var weatherDays: [lsWeatherReport] = []
+    var backgroundWeatherDays: [lsWeatherReport] = []
+    
     var inSearchMode: Bool = false
     
     func setID() -> String  {
@@ -29,7 +29,15 @@ open class lsModel {
         return id
     }
     
-    var weatherDays: [lsWeatherReport] = []
+    func addBackgroundWeatherDay(weather: lsWeatherReport) {
+        backgroundWeatherDays.append(weather)
+        let sortedArray = backgroundWeatherDays.sorted(by: {
+            (evt1: lsWeatherReport, evt2: lsWeatherReport) -> Bool in
+            return evt1.time > evt2.time
+        })
+        backgroundWeatherDays = sortedArray
+    }
+    
     func addWeatherDay(weather: lsWeatherReport) {
         weatherDays.append(weather)
         let sortedArray = weatherDays.sorted(by: {
@@ -37,5 +45,6 @@ open class lsModel {
             return evt1.time > evt2.time
         })
         weatherDays = sortedArray
+        backgroundWeatherDays = sortedArray
     }
 }

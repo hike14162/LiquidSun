@@ -2,8 +2,10 @@ import Foundation
 
 class lsRESTServices
 {
+    var delegate: lsRESTServicesDelegate!
+    
     func track(id: String, city: String, state: String, longitude: String, latitude: String, datetime: String) {
-        // Create jsone Data
+        // Create json Data
         let log: [String: Any] = ["ID":"\(id)", "City":"\(city)", "State":"\(state)", "Longitude":"\(longitude)", "Latitude":"\(latitude)", "DateTime":"\(datetime)"]
         let json: [String: Any] = ["value": log]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
@@ -55,13 +57,13 @@ class lsRESTServices
                                             currentObj.precipProbability = forecast.precipProbability
                                             currentObj.sunriseTime = forecast.sunriseTime
                                             currentObj.sunsetTime = forecast.sunsetTime
+                                            currentObj.data = data
                                         }
                                     }
                                 }
                                 
                                 DispatchQueue.main.async {
-                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "weatherDayAdd"), object:currentObj)
-
+                                    self.delegate!.weatherDayReturned(weatherDay: currentObj)
                                 }
                             }
                         }

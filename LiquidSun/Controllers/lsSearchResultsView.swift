@@ -7,6 +7,8 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     @IBOutlet weak var searchTable: UITableView!
 
     var lsData = lsModel.sharedInstance
+    var lsSearch = lsSearchState.sharedInstance
+    
     let searchCompleter: MKLocalSearchCompleter = MKLocalSearchCompleter()
     var delegate: lsSearchDelegate! = nil
 
@@ -14,13 +16,13 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.preferredContentSize = CGSize(width: 350.0, height: 450.0);
-        if !(lsHelper.isiPad()) {
+        if !(lsiOSHelper.isiPad()) {
             let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:  #selector(self.cancelBtnTap(_:)))
             cancelButton.tintColor = .white
             navigationItem.leftBarButtonItems = [cancelButton]
         } else {
             self.navigationController?.navigationBar.barTintColor = UIColor.groupTableViewBackground
-            self.navigationController?.navigationBar.titleTextAttributes = (lsHelper.getTitleBarAttributes(light: true) as! [NSAttributedStringKey : Any])
+            self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: true) as! [NSAttributedStringKey : Any])
 
         }
 
@@ -35,10 +37,10 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     }
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        lsData.searchItems = []
+        lsSearch.searchItems = []
         for item in completer.results {
             if item.subtitle.count == 0 {
-                lsData.searchItems.append(item)
+                lsSearch.searchItems.append(item)
             }
         }
         searchTable.reloadData()
@@ -49,7 +51,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        lsData.searchItems = []
+        lsSearch.searchItems = []
         searchBar.text = ""
         searchTable.reloadData()
     }
@@ -75,7 +77,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
             } else {
                 print("Problem with the data received from geocoder")
             }
-            self.lsData.searchItems = []
+            self.lsSearch.searchItems = []
             self.dismiss(animated: true, completion: nil)
         }
     }

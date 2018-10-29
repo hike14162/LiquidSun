@@ -8,8 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var iNetReach: Reachability?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.reachabilityChanged(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
@@ -53,5 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         reachabilityStatus = networkStatus.rawValue
     }
 
+    
 }
 

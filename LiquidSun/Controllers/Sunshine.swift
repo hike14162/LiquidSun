@@ -1,7 +1,7 @@
 import UIKit
-import CoreLocation
+import os.log
 
-class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
+class Sunshine: UIViewController, lsSearchDelegate, lsWatchDelegate, lsLocationDelegate, lsWeatherDelegate {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadLabel: UILabel!
@@ -39,81 +39,42 @@ class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-
+    
     var lsData = lsModel.sharedInstance
-    var locationManager: CLLocationManager = CLLocationManager()
-    var locationChecked: Bool = false
-    var displayCnt = 0
-    var webSvcs: lsRESTServices = lsRESTServices()
+    var watchSession: lsWatchSession?
+    var currentLocation: lsLocation?
+    var weatherInfo: lsWeather?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        currentLocation = lsLocation()
+        currentLocation!.delegate = self
+
+        watchSession = lsWatchSession()
+        watchSession!.delegate = self
+
+        weatherInfo = lsWeather()
+        weatherInfo?.delegate = self
+        
+        
         loadingIndicator.startAnimating()
         loadingIndicator.isHidden = false
         loadingView.isHidden = false
 
-        self.navigationController?.navigationBar.titleTextAttributes = (lsHelper.getTitleBarAttributes(light: false) as! [NSAttributedStringKey : Any])
+        self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: false) as! [NSAttributedStringKey : Any])
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.weatherDayAdd(_:)), name: NSNotification.Name(rawValue: "weatherDayAdd"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationChecked = false
-        locationManager.startUpdatingLocation()
+        currentLocation?.startLocation()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // clear screen and reinit weather array
         resetScreen()
     }
     
-    func getWeather(longitude: String, latitude: String) {
-        resetScreen()
-        lsData.longitude = longitude
-        lsData.latitude = latitude
-        
-        if (reachabilityStatus != 0) {
-            displayCnt = 6
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: 0))
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -1))
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -2))
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -3))
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -4))
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -5))
-        } else {
-            loadLabel.text = "Searching for a network connection..."
-            
-            let nwTimer = Timer(timeInterval: 1.0, target: self, selector:#selector(self.onNetworkRetryTick(_:)), userInfo: nil, repeats: true)
-            RunLoop.main.add(nwTimer, forMode: RunLoopMode.defaultRunLoopMode)
-        }
-        
-    }
-    
-
-    @objc func onNetworkRetryTick(_ timer: Timer) {
-        if (reachabilityStatus != 0) {
-            timer.invalidate()
-            locationChecked = false
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.startUpdatingLocation()
-            }
-        }
-    }
-
     // Notification Handlers
-    @objc func weatherDayAdd(_ notification: Notification) {
-        let newDayObj = notification.object as! lsWeatherReport
-        lsData.addWeatherDay(weather: newDayObj)
-        if lsData.weatherDays.count == self.displayCnt {
-            populateScreen()
-        }
-    }
-    
     @objc func foregroundEntered(_ notification: Notification) {
         reAquireWeather()
     }
@@ -128,20 +89,24 @@ class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
         }
         trendTable.reloadData()
     }
-    
+
+    // screen methods
     func reAquireWeather() {
         if (lsData.inSearchMode){
+            resetScreen()
             self.title = "\(lsData.city), \(lsData.state)"
             self.loadLabel.text = "Retrieving weather data for \(lsData.city), \(lsData.state)"
-            getWeather(longitude: lsData.longitude, latitude: lsData.latitude)
+            weatherInfo!.getWeather(longitude: lsData.longitude, latitude: lsData.latitude)
         } else {
-            locationChecked = false
-            locationManager.startUpdatingLocation()
+            resetScreen()
+            currentLocation?.startLocation()
         }
     }
     
     func resetScreen() {
         lsData.weatherDays = []
+        lsData.backgroundWeatherDays = []
+        
         loadingIndicator.startAnimating()
         loadingView.isHidden = false
 
@@ -168,9 +133,14 @@ class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
     }
     
     func populateScreen() {
+        if let ws = watchSession {
+            ws.pushLocationText(location: "\(lsData.city), \(lsData.state)")
+            ws.pushDataToWatch(data: lsData)
+        }
+
         loadingIndicator.stopAnimating()
         loadingView.isHidden = true
-                
+
         if (lsData.weatherDays[0].icon == "clear-day") {
             iconImage.image = UIImage(named: "clear-day")
         }
@@ -240,53 +210,9 @@ class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
         currentSunsetCoverLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunsetTime))"
         currentSunriseLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunriseTime))"
         
-        webSvcs.track(id: lsData.getID(), city: lsData.city, state: lsData.state, longitude: lsData.longitude, latitude: lsData.latitude, datetime: "\(Int32(Date().timeIntervalSince1970))" )
+//        webSvcs.track(id: lsData.getID(), city: lsData.city, state: lsData.state, longitude: lsData.longitude, latitude: lsData.latitude, datetime: "\(Int32(Date().timeIntervalSince1970))" )
         
         adjustSEConstraints()
-    }
-    
-    //location delegate methods
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .denied {
-            loadingView.isHidden = false
-            loadLabel.text = "Unable to access your location.  Please enable location services in Settings."
-            loadingIndicator.isHidden = true
-        } else {
-            loadLabel.text = "Retrieving weather data"
-            loadingIndicator.isHidden = false
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        if (!locationChecked) {
-            CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) in
-                if (error != nil) {
-                    return
-                }
-                
-                if (placemarks?.count)! > 0 {
-                    let pm = placemarks![0] as CLPlacemark
-                    self.lsData.city = pm.locality ?? ""
-                    self.lsData.state = pm.administrativeArea ?? ""
-                    self.title = "\(pm.locality ?? ""), \(pm.administrativeArea ?? "")"
-                    self.loadLabel.text = "Retrieving weather data for \(pm.locality ?? ""), \(pm.administrativeArea ?? "")"
-                } else {
-                    print("Problem with the data received from geocoder")
-                }
-            })
-            
-            locationChecked = true
-            locationManager.stopUpdatingLocation()
-            let locationArray = locations as NSArray
-            let locationObj = locationArray.lastObject as! CLLocation
-            let coord = locationObj.coordinate
-            
-            let currentLoc: CLLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-            lsData.longitude = "\(currentLoc.coordinate.longitude)"
-            lsData.latitude = "\(currentLoc.coordinate.latitude)"
-            getWeather(longitude: "\(currentLoc.coordinate.longitude)", latitude: "\(currentLoc.coordinate.latitude)")
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -298,15 +224,60 @@ class Sunshine: UIViewController, CLLocationManagerDelegate, lsSearchDelegate {
         }
     }
 
+    // lsSearchDelegate implementation
     func searchLocationSelected(longitude: String, latitude: String, city: String, state: String) {
         lsData.longitude = longitude
         lsData.latitude = latitude
         lsData.city = city
         lsData.state = state
         
-        getWeather(longitude: longitude, latitude: latitude)
+        weatherInfo!.getWeather(longitude: longitude, latitude: latitude)
         self.title = "\(city), \(state)"
         self.loadLabel.text = "Retrieving weather data for \(city), \(state)"
+    }
+    
+    
+    // lsWatchDelegate implementation
+    func getDataForWatch() {
+    }
+    
+    // lsLocationDelegate implementations
+    func locationDenied(id: String) {
+        loadingView.isHidden = false
+        loadLabel.text = "Unable to access your location.  Please enable location services in Settings."
+        loadingIndicator.isHidden = true
+    }
+
+    func locationAuthorized(id: String) {
+        loadLabel.text = "Retrieving weather data"
+        loadingIndicator.isHidden = false
+    }
+
+    func locationFound(id: String, longitude: String, latitude: String) {
+        lsData.longitude = longitude
+        lsData.latitude = latitude
+        weatherInfo!.getWeather(longitude: longitude, latitude: latitude)
+    }
+    
+    func locationString(id: String, city: String, state: String) {
+        lsData.city = city
+        lsData.state = state
+        title = "\(city), \(state)"
+        loadLabel.text = "Retrieving weather data for \(city), \(state)"
+    }
+
+    // lsWeatherDelegate implementation
+    func networkNotReachable() {
+        loadLabel.text = "Searching for a network connection..."
+    }
+    
+    func networkReachable() {
+        
+    }
+    
+    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport]) {
+        lsData.weatherDays = weatherDays
+        populateScreen()
     }
 }
 
