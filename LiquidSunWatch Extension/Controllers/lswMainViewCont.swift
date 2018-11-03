@@ -110,12 +110,13 @@ class lswMainViewCont: WKInterfaceController, lswWeatherDelegate, lsLocationDele
         currentTable.setNumberOfRows(1, withRowType: "lswCurrentCell")
         let row = currentTable.rowController(at: 0) as! lswCurrentCell
         row.lblCurrentCityState.setText(lsData.weatherLocationString)
-        
+
         row.lblCurrentTemp.setText("\(lsHelper.doubleToString(lsData.weatherDays[0].temperature,decimalPlaces: 1))\u{00B0}")
         row.lblCurrentFeels.setText("Feels \(lsHelper.doubleToString(lsData.weatherDays[0].apparentTemperature,decimalPlaces: 1))\u{00B0}")
-        row.lblCurrentWind.setText("\(lsData.weatherDays[0].windSpeed) mph - \(windDir(direction: lsData.weatherDays[0].windBearing))")
-        row.lblCurrentGust.setText("Gusts \(lsData.weatherDays[0].windGust) mph")
         
+        row.lblCurrentWind.setText("\(lsHelper.doubleToString(lsData.weatherDays[0].windSpeed,decimalPlaces: 1)) mph - \(windDir(direction: lsData.weatherDays[0].windBearing))")
+        
+        row.lblCurrentGust.setText("Gusts \(lsHelper.doubleToString(lsData.weatherDays[0].windGust,decimalPlaces: 1)) mph")
 
         if (lsData.weatherDays[0].icon == "clear-day") {
             row.imgCurrent.setImage(UIImage(named: "sunny"))

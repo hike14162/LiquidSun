@@ -53,14 +53,25 @@ class lswiPhoneFetch: NSObject, WCSessionDelegate {
                 }
                 )
             } else {
-                delegate.iPhoneNotReachable()
+                // start timer to check reachability on 1.5 seconds
+                let nwTimer = Timer(timeInterval: 1.5, target: self, selector:#selector(self.onReachabilityDelayTick(_:)), userInfo: nil, repeats: true)
+                RunLoop.main.add(nwTimer, forMode: RunLoop.Mode.default)
+                
             }
         } else { // could not unwrap
             
         }        
     }
 
-    
+    @objc func onReachabilityDelayTick(_ timer: Timer) {
+        timer.invalidate()
+        if let ssn = session {
+            if (!ssn.isReachable) {
+                delegate.iPhoneNotReachable()
+            }
+        }
+    }
+
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if (activationState == .activated) {
             self.session = session

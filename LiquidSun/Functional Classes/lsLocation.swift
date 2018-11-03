@@ -43,7 +43,8 @@ class lsLocation: NSObject, CLLocationManagerDelegate {
         if (searchOK) {
             searchOK = false
             locationManager.stopUpdatingLocation()
-            CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) in
+            if let loc = manager.location {
+                CLGeocoder().reverseGeocodeLocation(loc, completionHandler: {(placemarks, error) in
                 if (error != nil) {
                     return
                 }
@@ -55,6 +56,7 @@ class lsLocation: NSObject, CLLocationManagerDelegate {
                     print("Problem with the data received from geocoder")
                 }
             })
+            }
             
             let locationArray = locations as NSArray
             let locationObj = locationArray.lastObject as! CLLocation
