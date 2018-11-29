@@ -103,7 +103,7 @@ class lsWeatherReport {
     func getAsJson()->String {
         let dict: [String: Any] = self.getAsDict()
         let jsonData = try? JSONSerialization.data(withJSONObject: dict)
-        let jSonString: NSString = NSString(data: jsonData as! Data, encoding:String.Encoding.utf8.rawValue) ?? ""
+        let jSonString = NSString(data: jsonData!, encoding:String.Encoding.utf8.rawValue) ?? ""
         return jSonString as String
     }
 
