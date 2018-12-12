@@ -2,7 +2,7 @@ import Foundation
 
 class lsRESTServices
 {
-    var delegate: lsRESTServicesDelegate!
+    var delegate: lsRESTServicesDelegate?
     
     func track(id: String, city: String, state: String, longitude: String, latitude: String, datetime: String) {
         // Create json Data
@@ -63,7 +63,9 @@ class lsRESTServices
                                 }
                                 
                                 DispatchQueue.main.async {
-                                    self.delegate!.weatherDayReturned(weatherDay: currentObj)
+                                    if let dlgt = self.delegate {
+                                        dlgt.weatherDayReturned(weatherDay: currentObj)
+                                    }
                                 }
                             }
                         }

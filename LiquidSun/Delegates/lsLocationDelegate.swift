@@ -1,5 +1,3 @@
-import Foundation
-
 protocol lsLocationDelegate {
     func locationDenied(id: String)
     func locationAuthorized(id: String)

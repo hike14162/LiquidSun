@@ -1,4 +1,4 @@
-import Foundation
+import Foundation 
 
 protocol lswWeatherDelegate {
     func weatherDataReceived(weatherData: [Data])

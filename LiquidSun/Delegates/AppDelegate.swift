@@ -40,14 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.reachabilityChanged, object: nil)
     }
 
-    @objc func reachabilityChanged(_ notification: Notification)
-    {
+    @objc func reachabilityChanged(_ notification: Notification) {
         let reachability = notification.object as? Reachability
         self.statusChangedWithReachability(reachability!)
     }
 
-    func statusChangedWithReachability (_ currentReachabilityStatus: Reachability)
-    {
+    func statusChangedWithReachability (_ currentReachabilityStatus: Reachability) {
         let networkStatus: NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
         reachabilityStatus = networkStatus.rawValue
     }

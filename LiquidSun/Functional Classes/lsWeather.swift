@@ -1,6 +1,6 @@
 import Foundation
 
-class lsWeather: NSObject, lsRESTServicesDelegate {
+class lsWeather: NSObject {
     
     var delegate: lsWeatherDelegate?
     var webSvcs: lsRESTServices = lsRESTServices()
@@ -34,7 +34,9 @@ class lsWeather: NSObject, lsRESTServicesDelegate {
             webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -4))
             webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -5))
         } else {
-            delegate!.networkNotReachable()
+            if let dlgt = delegate {
+                dlgt.networkNotReachable()
+            }
             
             // retry timer
             let nwTimer = Timer(timeInterval: 1.0, target: self, selector:#selector(self.onNetworkRetryTick(_:)), userInfo: nil, repeats: true)
@@ -46,16 +48,21 @@ class lsWeather: NSObject, lsRESTServicesDelegate {
     @objc func onNetworkRetryTick(_ timer: Timer) {
         if (reachabilityStatus != 0) {
             timer.invalidate()
-            delegate!.networkReachable()
+            if let dlgt = delegate {
+                dlgt.networkReachable()
+            }
             getWeather(longitude: longitude, latitude: latitude, id: id)
         }
     }
+}
 
+extension lsWeather: lsRESTServicesDelegate {
     func weatherDayReturned(weatherDay: lsWeatherReport) {
         data.addWeatherDay(weather: weatherDay)
         if data.weatherDays.count == 6 {
-            delegate!.weatherRetrieved(id: id, weatherDays: data.weatherDays)
+            if let dlgt = delegate {
+                dlgt.weatherRetrieved(id: id, weatherDays: data.weatherDays)
+            }
         }
     }
-
 }

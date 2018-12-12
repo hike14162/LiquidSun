@@ -7,5 +7,4 @@ class lswCurrentCell: NSObject {
     @IBOutlet weak var lblCurrentWind: WKInterfaceLabel!
     @IBOutlet weak var lblCurrentGust: WKInterfaceLabel!    
     @IBOutlet weak var lblCurrentCityState: WKInterfaceLabel!
-    
 }

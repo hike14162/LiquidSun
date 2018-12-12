@@ -28,7 +28,7 @@ class lswiPhoneFetch: NSObject, WCSessionDelegate {
         }
     }
     
-    func requestDataFromiPhone() {
+    public func requestDataFromiPhone() {
         if let ssn = session {
             if (ssn.isReachable) {
                 delegate.iPhoneReachable()
@@ -72,6 +72,7 @@ class lswiPhoneFetch: NSObject, WCSessionDelegate {
         }
     }
 
+    // WCSessionDelegate implementation
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if (activationState == .activated) {
             self.session = session
@@ -99,8 +100,4 @@ class lswiPhoneFetch: NSObject, WCSessionDelegate {
         }
     }
 
-    func sessionReachabilityDidChange(_ session: WCSession) {
-        
-    }
-    
 }

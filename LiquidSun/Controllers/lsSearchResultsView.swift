@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UISearchBarDelegate, lsLocationSelectDelegate {
+class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UISearchBarDelegate {
     @IBOutlet var searchTableController: lsSearchResultsTable!    
     @IBOutlet weak var sBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
@@ -10,8 +10,8 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     var lsSearch = lsSearchState.sharedInstance
     
     let searchCompleter: MKLocalSearchCompleter = MKLocalSearchCompleter()
-    var delegate: lsSearchDelegate! = nil
 
+    var delegate: lsSearchDelegate! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
             navigationItem.leftBarButtonItems = [cancelButton]
         } else {
             self.navigationController?.navigationBar.barTintColor = UIColor.groupTableViewBackground
-            self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: true) as! [NSAttributedStringKey : Any])
+            self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: true) as? [NSAttributedStringKey : Any])
 
         }
 
@@ -32,20 +32,12 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
         searchTableController.delegate = self
     }
     
-    @objc func cancelBtnTap(_ sender: AnyObject) {
+    @objc private func cancelBtnTap(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        lsSearch.searchItems = []
-        for item in completer.results {
-            if item.subtitle.count == 0 {
-                lsSearch.searchItems.append(item)
-            }
-        }
-        searchTable.reloadData()
-    }
-    
+
+    // UISearchBarDelegate implementation
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchCompleter.queryFragment = searchText
     }
@@ -55,7 +47,21 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
         searchBar.text = ""
         searchTable.reloadData()
     }
-    
+
+    //MKLocalSearchCompleterDelegate implementation
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        lsSearch.searchItems = []
+        for item in completer.results {
+            if item.subtitle.count == 0 {
+                lsSearch.searchItems.append(item)
+            }
+        }
+        searchTable.reloadData()
+    }
+
+}
+
+extension lsSearchResultsView: lsLocationSelectDelegate {
     func selectLocation(locationTitle: String) {
         lsData.inSearchMode = true
         
@@ -65,20 +71,23 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
             if (error != nil) {
                 return
             }
-            
-            if (placemarks?.count)! > 0 {
-                let pm = placemarks![0] as CLPlacemark
-                
-                let def = CLLocationDegrees()
-                let long = "\(pm.location?.coordinate.longitude ?? def)"
-                let lat = "\(pm.location?.coordinate.latitude ?? def)"
-                
-                self.delegate.searchLocationSelected(longitude: long, latitude: lat, city: pm.locality ?? "", state: pm.administrativeArea ?? "")
-            } else {
-                print("Problem with the data received from geocoder")
+        
+            if let plcMk = placemarks {
+                if (plcMk.count) > 0 {
+                    let pm = plcMk[0] as CLPlacemark
+                    let def = CLLocationDegrees()
+                    let long = "\(pm.location?.coordinate.longitude ?? def)"
+                    let lat = "\(pm.location?.coordinate.latitude ?? def)"
+                    
+                    self.delegate.searchLocationSelected(longitude: long, latitude: lat, city: pm.locality ?? "", state: pm.administrativeArea ?? "")
+                } else {
+                    print("Problem with the data received from geocoder")
+                }
             }
+
             self.lsSearch.searchItems = []
             self.dismiss(animated: true, completion: nil)
         }
     }
 }
+

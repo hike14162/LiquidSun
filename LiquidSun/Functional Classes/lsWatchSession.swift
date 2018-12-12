@@ -1,7 +1,7 @@
 import Foundation
 import WatchConnectivity
 
-class lsWatchSession: NSObject, WCSessionDelegate, lsLocationDelegate, lsWeatherDelegate {
+class lsWatchSession: NSObject {
     var lsData = lsModel.sharedInstance
     var lsSearch = lsSearchState.sharedInstance
     
@@ -16,7 +16,7 @@ class lsWatchSession: NSObject, WCSessionDelegate, lsLocationDelegate, lsWeather
     override init() {
         super .init()
         currentLocation = lsLocation()
-        currentLocation!.delegate = self
+        currentLocation?.delegate = self
         
         weatherInfo = lsWeather()
         weatherInfo?.delegate = self
@@ -64,6 +64,9 @@ class lsWatchSession: NSObject, WCSessionDelegate, lsLocationDelegate, lsWeather
         }
     }
 
+}
+
+extension lsWatchSession: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if (activationState == .activated) {
             activated = true
@@ -71,7 +74,7 @@ class lsWatchSession: NSObject, WCSessionDelegate, lsLocationDelegate, lsWeather
         } else {
             print(error.debugDescription)
         }
-
+        
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -83,20 +86,18 @@ class lsWatchSession: NSObject, WCSessionDelegate, lsLocationDelegate, lsWeather
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         if let reference = message["dataRequest"] as? String {
             if (reference == "getWeather") {
-                currentLocation!.startLocation()
+                currentLocation?.startLocation()
                 replyHandler(["getWeatherResult": "fetching"])
             }
         }
     }
+}
 
-    
-    // lsLocationDelegate implementation
+extension lsWatchSession: lsLocationDelegate {
     func locationDenied(id: String) {
-        
     }
     
     func locationAuthorized(id: String) {
-        
     }
     
     func locationFound(id: String, longitude: String, latitude: String) {
@@ -106,20 +107,18 @@ class lsWatchSession: NSObject, WCSessionDelegate, lsLocationDelegate, lsWeather
     func locationString(id: String, city: String, state: String) {
         pushLocationText(location: "\(city), \(state)")
     }
-    
+}
 
-    // lsWeatherDelegate implementation
+extension lsWatchSession: lsWeatherDelegate {
     func networkNotReachable() {
-        
     }
     
     func networkReachable() {
-        
     }
     
     func weatherRetrieved(id: String, weatherDays: [lsWeatherReport]) {
         data.backgroundWeatherDays = weatherDays
         pushDataToWatch(data: data)
     }
-
 }
+

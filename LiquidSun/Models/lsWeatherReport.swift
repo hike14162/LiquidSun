@@ -1,6 +1,6 @@
 import Foundation
 
-class lsWeatherReport {
+public class lsWeatherReport {
     var summary: String
     var icon: String
     var time: Date
@@ -42,7 +42,7 @@ class lsWeatherReport {
         cloudCover = 0.0
         sunriseTime = Date(timeIntervalSince1970: Double(0.0))
         sunsetTime = Date(timeIntervalSince1970: Double(0.0))
-        
+
         do {
             if let fullDoc = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] {
                 if let json = fullDoc["currently"] as? [String: Any] {
@@ -94,13 +94,13 @@ class lsWeatherReport {
         sunsetTime = Date(timeIntervalSince1970: Double((json["sunsetTime"] as? Double) ?? 0.0))
     }
     
-    func getAsDict()->[String:Any]
+    public func getAsDict()->[String:Any]
     {
         let dict: [String: Any] = ["summary":"\(summary)", "temperature":"\(temperature)", "temperatureHigh":"\(temperatureHigh)", "temperatureLow":"\(temperatureLow)","time":"\(time)","humidity":"\(humidity)","windSpeed":"\(windSpeed)","windGust":"\(windGust)","windBearing":"\(windBearing)","apparentTemperature":"\(apparentTemperature)","precipProbability":"\(precipProbability)","icon":"\(icon)","visibility":"\(visibility)","temperatureHighTime":"\(temperatureHighTime)","dewPoint":"\(dewPoint)","cloudCover":"\(cloudCover)","sunriseTime":"\(sunriseTime)","sunsetTime":"\(sunsetTime)"]
         return dict
     }
     
-    func getAsJson()->String {
+    public func getAsJson()->String {
         let dict: [String: Any] = self.getAsDict()
         let jsonData = try? JSONSerialization.data(withJSONObject: dict)
         let jSonString = NSString(data: jsonData!, encoding:String.Encoding.utf8.rawValue) ?? ""

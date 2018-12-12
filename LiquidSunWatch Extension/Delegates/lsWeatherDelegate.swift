@@ -1,5 +1,3 @@
-import Foundation
-
 protocol  lsWeatherDelegate {
     func networkNotReachable()
     func networkReachable()

@@ -3,7 +3,6 @@ import UIKit
 class lsSearchResultsTable: UITableViewController {
     var lsData = lsModel.sharedInstance
     var lsSearch = lsSearchState.sharedInstance
-    
     var delegate: lsLocationSelectDelegate! = nil
 
     override func viewDidLoad() {
@@ -21,12 +20,13 @@ class lsSearchResultsTable: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         var cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as? searchCell
-        
-        if !(cell != nil) {
+        if cell == nil {
             cell = searchCell(style: UITableViewCellStyle.value1, reuseIdentifier: "searchCell")
         }
-        cell!.locationLabel.text = lsSearch.searchItems[indexPath.row].title
         
+        if let currCell = cell {
+            currCell.locationLabel.text = lsSearch.searchItems[indexPath.row].title
+        }
         return cell ?? UITableViewCell()
     }
     

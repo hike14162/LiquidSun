@@ -1,11 +1,12 @@
 import Foundation
 
 private let _ModelSingletonSharedInstance = lsModel()
-open class lsModel {
+
+public class lsModel {
     open class var sharedInstance : lsModel {
         return _ModelSingletonSharedInstance
     }
-    
+
     var city: String = ""
     var state: String = ""
     var longitude: String = ""
@@ -18,18 +19,18 @@ open class lsModel {
     
     var inSearchMode: Bool = false
     
-    func setID() -> String  {
+    public func setID() -> String  {
         let id = lsHelper.getGUID()
         UserDefaults.standard.set(id, forKey: "instID")
         return id
     }
     
-    func getID() -> String {
+    public func getID() -> String {
         let id = UserDefaults.standard.object(forKey: "instID") as? String ?? setID()
         return id
     }
     
-    func addBackgroundWeatherDay(weather: lsWeatherReport) {
+    public func addBackgroundWeatherDay(weather: lsWeatherReport) {
         backgroundWeatherDays.append(weather)
         let sortedArray = backgroundWeatherDays.sorted(by: {
             (evt1: lsWeatherReport, evt2: lsWeatherReport) -> Bool in
@@ -38,7 +39,7 @@ open class lsModel {
         backgroundWeatherDays = sortedArray
     }
     
-    func addWeatherDay(weather: lsWeatherReport) {
+    public func addWeatherDay(weather: lsWeatherReport) {
         weatherDays.append(weather)
         let sortedArray = weatherDays.sorted(by: {
             (evt1: lsWeatherReport, evt2: lsWeatherReport) -> Bool in

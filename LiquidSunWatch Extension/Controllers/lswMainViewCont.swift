@@ -1,7 +1,7 @@
 import WatchKit
 import Foundation
 
-class lswMainViewCont: WKInterfaceController, lswWeatherDelegate, lsLocationDelegate {
+class lswMainViewCont: WKInterfaceController  {
     @IBOutlet weak var currentTable: WKInterfaceTable!
     @IBOutlet weak var pastTable: WKInterfaceTable!
     @IBOutlet weak var weatherGroup: WKInterfaceGroup!
@@ -11,20 +11,16 @@ class lswMainViewCont: WKInterfaceController, lswWeatherDelegate, lsLocationDele
     
     @IBAction func retryTap() {
         iPhoneFetch.beginTransfer()
-//        nativeFetch.beginTransfer()
     }
     
     var lsData = lsModel.sharedInstance
     var iPhoneFetch = lswiPhoneFetch()
-//    var nativeFetch = lswNativeFetch()
-
     var retryOk = false
     
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         iPhoneFetch.delegate = self
-//        nativeFetch.delegate = self
     }
     
     override func willActivate() {
@@ -32,16 +28,8 @@ class lswMainViewCont: WKInterfaceController, lswWeatherDelegate, lsLocationDele
 
         startWait()
         iPhoneFetch.beginTransfer()
-//        nativeFetch.beginTransfer()
     }
     
-    override func didDeactivate() {
-        super.didDeactivate()
-    }
-    
-    override func didAppear() {
-    }
-
     func startWait() {
         weatherGroup.setHidden(true)
         progressButton.setHidden(false)
@@ -107,109 +95,60 @@ class lswMainViewCont: WKInterfaceController, lswWeatherDelegate, lsLocationDele
         for jsonData in weatherArr {
             lsData.weatherDays.append(lsWeatherReport(jsonData: jsonData))
         }
+        
         currentTable.setNumberOfRows(1, withRowType: "lswCurrentCell")
-        let row = currentTable.rowController(at: 0) as! lswCurrentCell
-        row.lblCurrentCityState.setText(lsData.weatherLocationString)
-
-        row.lblCurrentTemp.setText("\(lsHelper.doubleToString(lsData.weatherDays[0].temperature,decimalPlaces: 1))\u{00B0}")
-        row.lblCurrentFeels.setText("Feels \(lsHelper.doubleToString(lsData.weatherDays[0].apparentTemperature,decimalPlaces: 1))\u{00B0}")
-        
-        row.lblCurrentWind.setText("\(lsHelper.doubleToString(lsData.weatherDays[0].windSpeed,decimalPlaces: 1)) mph - \(windDir(direction: lsData.weatherDays[0].windBearing))")
-        
-        row.lblCurrentGust.setText("Gusts \(lsHelper.doubleToString(lsData.weatherDays[0].windGust,decimalPlaces: 1)) mph")
-
-        if (lsData.weatherDays[0].icon == "clear-day") {
-            row.imgCurrent.setImage(UIImage(named: "sunny"))
-        }
-        else if (lsData.weatherDays[0].icon == "clear-night") {
-            row.imgCurrent.setImage(UIImage(named: "clear-night"))
-        }
-        else if (lsData.weatherDays[0].icon == "partly-cloudy-day") {
-            row.imgCurrent.setImage(UIImage(named: "partly-cloudy-day"))
-        }
-        else if (lsData.weatherDays[0].icon == "partly-cloudy-night") {
-            row.imgCurrent.setImage(UIImage(named: "partly-cloudy-night"))
-        }
-        else if (lsData.weatherDays[0].icon == "cloudy") {
-            row.imgCurrent.setImage(UIImage(named: "cloudy"))
-        }
-        else if (lsData.weatherDays[0].icon == "rain") {
-            row.imgCurrent.setImage(UIImage(named: "rain"))
-        }
-        else if (lsData.weatherDays[0].icon == "sleet") {
-            row.imgCurrent.setImage(UIImage(named: "sleet"))
-        }
-        else if (lsData.weatherDays[0].icon == "snow") {
-            row.imgCurrent.setImage(UIImage(named: "snow"))
-        }
-        else if (lsData.weatherDays[0].icon == "wind") {
-            row.imgCurrent.setImage(UIImage(named: "wind"))
-        }
-        else if (lsData.weatherDays[0].icon == "fog") {
-            row.imgCurrent.setImage(UIImage(named: "fog"))
-        }
-        else {
-            row.imgCurrent.setImage(UIImage(named: "sunny"))
+        if let row = currentTable.rowController(at: 0) as? lswCurrentCell {
+            row.lblCurrentCityState.setText(lsData.weatherLocationString)
+            
+            row.lblCurrentTemp.setText("\(lsHelper.doubleToString(lsData.weatherDays[0].temperature,decimalPlaces: 1))\u{00B0}")
+            row.lblCurrentFeels.setText("Feels \(lsHelper.doubleToString(lsData.weatherDays[0].apparentTemperature,decimalPlaces: 1))\u{00B0}")            
+            row.lblCurrentWind.setText("\(lsHelper.doubleToString(lsData.weatherDays[0].windSpeed,decimalPlaces: 1)) mph - \(windDir(direction: lsData.weatherDays[0].windBearing))")
+            row.lblCurrentGust.setText("Gusts \(lsHelper.doubleToString(lsData.weatherDays[0].windGust,decimalPlaces: 1)) mph")
+            row.imgCurrent.setImage(UIImage(named: lsData.weatherDays[0].icon))
         }
         
         pastTable.setNumberOfRows(lsData.weatherDays.count-1, withRowType: "lswPastCell")
         for index in 1..<lsData.weatherDays.count {
-            let prow = pastTable.rowController(at: index-1) as! lswPastCell
-            prow.lblPastYear.setText("\(lsHelper.DateToYearString(lsData.weatherDays[index].time))")
-            prow.lblPastTemp.setText("\(lsHelper.doubleToString(lsData.weatherDays[index].temperature,decimalPlaces: 1))\u{00B0}")
-            
-            if (lsData.weatherDays[index].icon == "clear-day") {
-                prow.imgPastConditions.setImage(UIImage(named: "sunny"))
+            if let prow = pastTable.rowController(at: index-1) as? lswPastCell {
+                prow.lblPastYear.setText("\(lsHelper.DateToYearString(lsData.weatherDays[index].time))")
+                prow.lblPastTemp.setText("\(lsHelper.doubleToString(lsData.weatherDays[index].temperature,decimalPlaces: 1))\u{00B0}")
+                
+                prow.imgPastConditions.setImage(UIImage(named: lsData.weatherDays[index].icon))
+                
+                if (lsData.weatherDays[index].temperature < lsData.weatherDays[0].temperature) {
+                    prow.lblPastTemp.setTextColor(lsHelper.lightBlueColor())
+                } else if (lsData.weatherDays[index].temperature > lsData.weatherDays[0].temperature) {
+                    prow.lblPastTemp.setTextColor(lsHelper.redColor())
+                } else if (lsData.weatherDays[index].temperature == lsData.weatherDays[0].temperature) {
+                    prow.lblPastTemp.setTextColor(.white)
+                }
             }
-            else if (lsData.weatherDays[index].icon == "clear-night") {
-                prow.imgPastConditions.setImage(UIImage(named: "clear-night"))
-            }
-            else if (lsData.weatherDays[index].icon == "partly-cloudy-day") {
-                prow.imgPastConditions.setImage(UIImage(named: "partly-cloudy-day"))
-            }
-            else if (lsData.weatherDays[index].icon == "partly-cloudy-night") {
-                prow.imgPastConditions.setImage(UIImage(named: "partly-cloudy-night"))
-            }
-            else if (lsData.weatherDays[index].icon == "cloudy") {
-                prow.imgPastConditions.setImage(UIImage(named: "cloudy"))
-            }
-            else if (lsData.weatherDays[index].icon == "rain") {
-                prow.imgPastConditions.setImage(UIImage(named: "rain"))
-            }
-            else if (lsData.weatherDays[index].icon == "sleet") {
-                prow.imgPastConditions.setImage(UIImage(named: "sleet"))
-            }
-            else if (lsData.weatherDays[index].icon == "snow") {
-                prow.imgPastConditions.setImage(UIImage(named: "snow"))
-            }
-            else if (lsData.weatherDays[index].icon == "wind") {
-                prow.imgPastConditions.setImage(UIImage(named: "wind"))
-            }
-            else if (lsData.weatherDays[index].icon == "fog") {
-                prow.imgPastConditions.setImage(UIImage(named: "fog"))
-            }
-            else {
-                prow.imgPastConditions.setImage(UIImage(named: "sunny"))
-            }
-            
-            
-            if (lsData.weatherDays[index].temperature < lsData.weatherDays[0].temperature) {
-                prow.lblPastTemp.setTextColor(lsHelper.lightBlueColor())
-            } else if (lsData.weatherDays[index].temperature > lsData.weatherDays[0].temperature) {
-                prow.lblPastTemp.setTextColor(lsHelper.redColor())
-            } else if (lsData.weatherDays[index].temperature == lsData.weatherDays[0].temperature) {
-                prow.lblPastTemp.setTextColor(.white)
-            }
-            
-            
         }
         stopWait()
     }
+}
 
+extension lswMainViewCont: lsLocationDelegate {
+    func locationDenied(id: String) {
+    }
+    
+    func locationAuthorized(id: String) {
+    }
+    
+    func locationFound(id: String, longitude: String, latitude: String) {
+        print("\(longitude)  \(latitude)")
+    }
+    
+    func locationString(id: String, city: String, state: String) {
+        print("\(city), \(state)")
+    }
+}
+
+extension lswMainViewCont: lswWeatherDelegate {
     func weatherDataReceived(weatherData: [Data]) {
         updateWeatherData(weatherArr: weatherData)
     }
-
+    
     func updateCityStateLabel(locationString: String) {
         lsData.weatherLocationString = locationString
     }
@@ -221,21 +160,5 @@ class lswMainViewCont: WKInterfaceController, lswWeatherDelegate, lsLocationDele
     func iPhoneReachable() {
         iPhoneMessage.setHidden(true)
     }
-
-    // lsLocationDelegate implementation
-    func locationDenied(id: String) {
-        
-    }
     
-    func locationAuthorized(id: String) {
-        
-    }
-    
-    func locationFound(id: String, longitude: String, latitude: String) {
-        print("\(longitude)  \(latitude)")
-    }
-    
-    func locationString(id: String, city: String, state: String) {
-        print("\(city), \(state)")
-    }
 }
