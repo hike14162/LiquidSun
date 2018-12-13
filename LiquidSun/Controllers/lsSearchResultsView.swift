@@ -15,6 +15,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.preferredContentSize = CGSize(width: 350.0, height: 450.0);
         if !(lsiOSHelper.isiPad()) {
             let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:  #selector(self.cancelBtnTap(_:)))

@@ -64,8 +64,8 @@ public class Sunshine: UIViewController {
         loadingIndicator.isHidden = false
         loadingView.isHidden = false
 
-        self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: false) as? [NSAttributedStringKey : Any])
-        
+        navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: false) as? [NSAttributedStringKey : Any])
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         currentLocation?.startLocation()

@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (iNetReach != nil) {
             self.statusChangedWithReachability(iNetReach!)
         }
-        
-        UIApplication.shared.statusBarStyle = .lightContent
+
         return true
     }
 
