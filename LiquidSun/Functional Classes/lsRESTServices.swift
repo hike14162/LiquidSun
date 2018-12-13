@@ -36,7 +36,7 @@ class lsRESTServices
         let urlString = "https://api.darksky.net/forecast/0af818c07d981c24834f044aa8609ac5/\(latitude),\(longitude),\(Int32(date.timeIntervalSince1970))?exclude=minutely,hourly,alerts"
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 print(error!.localizedDescription)
             }

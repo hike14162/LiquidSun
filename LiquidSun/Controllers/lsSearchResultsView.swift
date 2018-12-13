@@ -8,11 +8,10 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
 
     var lsData = lsModel.sharedInstance
     var lsSearch = lsSearchState.sharedInstance
-    
+    var delegate: lsSearchDelegate! = nil
+
     let searchCompleter: MKLocalSearchCompleter = MKLocalSearchCompleter()
 
-    var delegate: lsSearchDelegate! = nil
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

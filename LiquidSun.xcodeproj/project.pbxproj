@@ -298,8 +298,8 @@
 				526E6F282180CB0100EDB68E /* Functional Classes */,
 				526E6F292180CB2200EDB68E /* Helper */,
 				528AD00A212A35460094374E /* Assets.xcassets */,
-				52F29A88212F2C97008CBD56 /* LiquidSun-Bridging-Header.h */,
 				52F29A86212E1FF1008CBD56 /* artwork.xcassets */,
+				52F29A88212F2C97008CBD56 /* LiquidSun-Bridging-Header.h */,
 				5229B92E2133735C00FD4504 /* LiquidSun.entitlements */,
 				528AD00F212A35460094374E /* Info.plist */,
 			);

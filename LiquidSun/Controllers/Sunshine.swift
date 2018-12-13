@@ -67,6 +67,7 @@ public class Sunshine: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: false) as? [NSAttributedStringKey : Any])
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         currentLocation?.startLocation()
     }
@@ -76,8 +77,7 @@ public class Sunshine: UIViewController {
         resetScreen()
     }
     
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchSegue" {
             guard
                 let destNav = segue.destination as? UINavigationController,

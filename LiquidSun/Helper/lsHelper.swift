@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import CoreLocation
 
 public class lsHelper {
     public class func DateToTimeString(_ date: Date)-> String {

@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 open class lsiOSHelper {
+    
     open class func isiPad() -> Bool
     {
         return (UIDevice.current.userInterfaceIdiom == .pad)
@@ -16,15 +17,11 @@ open class lsiOSHelper {
             foreColor = lsHelper.darkBlueColor()
         }
         return NSDictionary(objects: [foreColor, shadow, UIFont(name: "Apple SD Gothic Neo", size: 20.0)!], forKeys: [NSAttributedStringKey.foregroundColor as NSCopying, NSAttributedStringKey.shadow as NSCopying, NSAttributedStringKey.font as NSCopying])
-        
     }
     
-
     open class func showAlertMessage(view: UIViewController, title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         view.present(alert, animated: true, completion: nil)
     }
-    
-
 }
