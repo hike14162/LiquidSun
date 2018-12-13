@@ -1,18 +1,18 @@
 import Foundation
 import WatchConnectivity
 
-class lsWatchSession: NSObject {
+final class lsWatchSession: NSObject {
+    // MARK: - member variables
     var lsData = lsModel.sharedInstance
     var lsSearch = lsSearchState.sharedInstance
-    
     var session: WCSession?
     var activated = false
     var delegate: lsWatchDelegate? = nil
     var currentLocation: lsLocation? = nil
     var weatherInfo: lsWeather? = nil
-
     var data: lsModel = lsModel()
     
+    // MARK: - Overrides
     override init() {
         super .init()
         currentLocation = lsLocation()
@@ -29,6 +29,7 @@ class lsWatchSession: NSObject {
 
     }
     
+    // MARK: - Methods
     func pushLocationText(location: String) {
         if activated {
             if let ssn = session {
@@ -66,6 +67,7 @@ class lsWatchSession: NSObject {
 
 }
 
+// MARK: - WCSessionDelegate implementation
 extension lsWatchSession: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if (activationState == .activated) {
@@ -93,6 +95,7 @@ extension lsWatchSession: WCSessionDelegate {
     }
 }
 
+// MARK: - lsLocationDelegate implementation
 extension lsWatchSession: lsLocationDelegate {
     func locationDenied(id: String) {
     }
@@ -109,6 +112,7 @@ extension lsWatchSession: lsLocationDelegate {
     }
 }
 
+// MARK: - lsWeatherDelegate implementation
 extension lsWatchSession: lsWeatherDelegate {
     func networkNotReachable() {
     }

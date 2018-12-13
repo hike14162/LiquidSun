@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 open class lsiOSHelper {
-    
+    // MARK: - Misc iOS util methods
     open class func isiPad() -> Bool
     {
         return (UIDevice.current.userInterfaceIdiom == .pad)

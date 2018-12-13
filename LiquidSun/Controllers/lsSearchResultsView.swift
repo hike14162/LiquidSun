@@ -2,16 +2,19 @@ import UIKit
 import MapKit
 
 class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UISearchBarDelegate {
+    // MARK: - OView utlets
     @IBOutlet var searchTableController: lsSearchResultsTable!    
     @IBOutlet weak var sBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
 
+    // MARK: - Members
     var lsData = lsModel.sharedInstance
     var lsSearch = lsSearchState.sharedInstance
     var delegate: lsSearchDelegate! = nil
 
     let searchCompleter: MKLocalSearchCompleter = MKLocalSearchCompleter()
 
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,7 +40,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
     }
     
 
-    // UISearchBarDelegate implementation
+    // MARK: - UISearchBarDelegate implementation
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchCompleter.queryFragment = searchText
     }
@@ -48,7 +51,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
         searchTable.reloadData()
     }
 
-    //MKLocalSearchCompleterDelegate implementation
+    // MARK: - MKLocalSearchCompleterDelegate implementation
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         lsSearch.searchItems = []
         for item in completer.results {
@@ -61,6 +64,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
 
 }
 
+// MARK: - lsLocationSelectDelegate
 extension lsSearchResultsView: lsLocationSelectDelegate {
     func selectLocation(locationTitle: String) {
         lsData.inSearchMode = true

@@ -1,10 +1,12 @@
 import UIKit
 
 class lsSearchResultsTable: UITableViewController {
+    // MARK: - Members
     var lsData = lsModel.sharedInstance
     var lsSearch = lsSearchState.sharedInstance
     var delegate: lsLocationSelectDelegate! = nil
 
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,6 +37,7 @@ class lsSearchResultsTable: UITableViewController {
     }
 }
 
+// MARK: - searchCell
 class searchCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!    
 }

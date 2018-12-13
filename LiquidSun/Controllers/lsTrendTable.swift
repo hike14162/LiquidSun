@@ -2,10 +2,10 @@
 import UIKit
 
 class lsTrendTable: UITableViewController {
-    //State singleton
+    // MARK: - State singleton
     var lsData = lsModel.sharedInstance
     
-    // UITableViewController overrides
+    // MARK: -  UITableViewController overrides
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -116,6 +116,7 @@ class lsTrendTable: UITableViewController {
 }
 
 class trendCell: UITableViewCell {
+    // MARK: - View Outlets
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var trendDateLabel: UILabel!
     @IBOutlet weak var summaryTempLabel: UILabel!

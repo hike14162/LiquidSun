@@ -1,20 +1,21 @@
 import Foundation
 
 class lsWeather: NSObject {
-    
+// MARK: - Member Variables
     var delegate: lsWeatherDelegate?
     var webSvcs: lsRESTServices = lsRESTServices()
     var data: lsModel = lsModel()
-    
     var longitude = ""
     var latitude = ""
     var id = ""
     
+// MARK: - Overrides
     override init() {
         super.init()
         webSvcs.delegate = self
     }
     
+// MARK: - Methods
     func getWeather(longitude: String, latitude: String) {
         getWeather(longitude: longitude, latitude: latitude,id: "")
     }
@@ -56,6 +57,7 @@ class lsWeather: NSObject {
     }
 }
 
+// MARK: - lsRESTServicesDelegate
 extension lsWeather: lsRESTServicesDelegate {
     func weatherDayReturned(weatherDay: lsWeatherReport) {
         data.addWeatherDay(weather: weatherDay)

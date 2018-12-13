@@ -2,7 +2,7 @@ import UIKit
 
 public class Sunshine: UIViewController {
     
-    //outlet and action links to view
+// MARK: - View Outlets
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadLabel: UILabel!
@@ -30,6 +30,7 @@ public class Sunshine: UIViewController {
     @IBOutlet weak var dewPointLeadingEdge: NSLayoutConstraint!
     @IBOutlet weak var visibilityLeadingEdge: NSLayoutConstraint!
     
+    // MARK: - View Actions
     @IBAction func gotoCurrentTap(_ sender: Any) {
         lsData.inSearchMode = false
         reAquireWeather()
@@ -41,13 +42,13 @@ public class Sunshine: UIViewController {
         }
     }
     
-    // private member variables
+    // MARK: - private member variables
     private var lsData = lsModel.sharedInstance
     private var watchSession: lsWatchSession?
     private var currentLocation: lsLocation?
     private var weatherInfo: lsWeather?
 
-    // Overrides from UIViewController
+    // MARK: -  Overrides from UIViewController
     override public func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,7 +90,7 @@ public class Sunshine: UIViewController {
         }
     }
 
-    // Notification Handlers
+    // MARK: -  Notification Handlers
     @objc func foregroundEntered(_ notification: Notification) {
         reAquireWeather()
     }
@@ -104,7 +105,7 @@ public class Sunshine: UIViewController {
         trendTable.reloadData()
     }
 
-    // view manipulation methods methods
+    // MARK: -  view manipulation methods methods
     private func reAquireWeather() {
         if (lsData.inSearchMode){
             resetScreen()
@@ -200,7 +201,7 @@ public class Sunshine: UIViewController {
     }
 }
 
-// lsSearchDelegate implementation
+// MARK: -  lsSearchDelegate implementation
 extension Sunshine: lsSearchDelegate {
     func searchLocationSelected(longitude: String, latitude: String, city: String, state: String) {
         lsData.longitude = longitude
@@ -216,14 +217,14 @@ extension Sunshine: lsSearchDelegate {
     }
 }
 
-// lsWatchDelegate implementation
+// MARK: - lsWatchDelegate
 extension Sunshine: lsWatchDelegate {
     func getDataForWatch() {
     }
     
 }
 
-// lsLocationDelegate implementation
+// MARK: - lsLocationDelegate
 extension Sunshine: lsLocationDelegate {
     func locationDenied(id: String) {
         loadingView.isHidden = false
@@ -253,7 +254,7 @@ extension Sunshine: lsLocationDelegate {
     }
 }
 
-// lsWeatherDelegate implementation
+// MARK: - lsWeatherDelegate
 extension Sunshine: lsWeatherDelegate {
     func networkNotReachable() {
         loadLabel.text = "Searching for a network connection..."

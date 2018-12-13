@@ -1,27 +1,29 @@
 import Foundation
 
 public class lsWeatherReport {
-    var summary: String
-    var icon: String
-    var time: Date
-    var temperature: Double
-    var apparentTemperature: Double
-    var humidity: Double
-    var windSpeed: Double
-    var windGust: Double
-    var windBearing: Double
-    var precipProbability: Double
-    var visibility: Double
-    var temperatureHigh: Double
-    var temperatureHighTime: Date
-    var temperatureLow: Double
-    var temperatureLowTime: Date
-    var dewPoint: Double
-    var cloudCover: Double
-    var sunriseTime: Date
-    var sunsetTime: Date
-    var data = Data()
+    // MARK: - Public members
+    public var summary: String
+    public var icon: String
+    public var time: Date
+    public var temperature: Double
+    public var apparentTemperature: Double
+    public var humidity: Double
+    public var windSpeed: Double
+    public var windGust: Double
+    public var windBearing: Double
+    public var precipProbability: Double
+    public var visibility: Double
+    public var temperatureHigh: Double
+    public var temperatureHighTime: Date
+    public var temperatureLow: Double
+    public var temperatureLowTime: Date
+    public var dewPoint: Double
+    public var cloudCover: Double
+    public var sunriseTime: Date
+    public var sunsetTime: Date
+    public var data = Data()
     
+    //MARK: - Inits
     init(jsonData: Data) {
         summary = ""
         temperature =  0.0
@@ -94,6 +96,7 @@ public class lsWeatherReport {
         sunsetTime = Date(timeIntervalSince1970: Double((json["sunsetTime"] as? Double) ?? 0.0))
     }
     
+    // MARK: - Get Methods
     public func getAsDict()->[String:Any]
     {
         let dict: [String: Any] = ["summary":"\(summary)", "temperature":"\(temperature)", "temperatureHigh":"\(temperatureHigh)", "temperatureLow":"\(temperatureLow)","time":"\(time)","humidity":"\(humidity)","windSpeed":"\(windSpeed)","windGust":"\(windGust)","windBearing":"\(windBearing)","apparentTemperature":"\(apparentTemperature)","precipProbability":"\(precipProbability)","icon":"\(icon)","visibility":"\(visibility)","temperatureHighTime":"\(temperatureHighTime)","dewPoint":"\(dewPoint)","cloudCover":"\(cloudCover)","sunriseTime":"\(sunriseTime)","sunsetTime":"\(sunsetTime)"]

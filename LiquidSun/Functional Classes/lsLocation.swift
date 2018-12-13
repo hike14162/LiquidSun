@@ -1,13 +1,14 @@
 import Foundation
 import CoreLocation
 
-class lsLocation: NSObject, CLLocationManagerDelegate {
-    
+class lsLocation: NSObject {
+    // MARK: - Member variables
     var locationManager: CLLocationManager = CLLocationManager()
     var delegate: lsLocationDelegate? = nil
     var id = ""
     var searchOK = true
     
+    // MARK: - Overrides
     override init() {
         super.init()
 
@@ -16,6 +17,7 @@ class lsLocation: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    // MARK: - Methods
     func startLocation() {
         id = lsHelper.getGUID()
         if CLLocationManager.locationServicesEnabled() {
@@ -31,8 +33,10 @@ class lsLocation: NSObject, CLLocationManagerDelegate {
     func getID() -> String {
         return self.id
     }
-    
-    // Location delegate implementations
+}
+
+// MARK: - CLLocationManagerDelegate Implementation
+extension lsLocation: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if let dlgt = delegate {
             if (status == .denied) {
@@ -75,5 +79,6 @@ class lsLocation: NSObject, CLLocationManagerDelegate {
             }
             
         }
-    }    
+    }
+
 }

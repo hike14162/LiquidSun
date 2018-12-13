@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 public class lsHelper {
+    // MARK: - Date Methods
     public class func DateToTimeString(_ date: Date)-> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mma"
@@ -60,6 +61,7 @@ public class lsHelper {
         return date!
     }
     
+    // MARK: - Color Methods
     public class func darkBlueColor() -> UIColor {
         return UIColor(red: 0.1176, green: 0.1176, blue: 1, alpha: 1)
     }
@@ -71,7 +73,9 @@ public class lsHelper {
     public class func redColor() -> UIColor {
         return UIColor(red: 0.9333, green: 0.5647, blue: 0.5742, alpha: 1)
     }
-
+    
+    
+    // MARK: - Misc utility methods
     public class func doubleToString(_ num: Double, decimalPlaces: Int) -> String {
         var numFormatter: NumberFormatter {
             let formatter = NumberFormatter()

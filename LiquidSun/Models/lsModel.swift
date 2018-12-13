@@ -3,22 +3,23 @@ import Foundation
 private let _ModelSingletonSharedInstance = lsModel()
 
 public class lsModel {
+    // MARK: - Singleton method
     open class var sharedInstance : lsModel {
         return _ModelSingletonSharedInstance
     }
 
+    // MARK: - Public variables
     var city: String = ""
     var state: String = ""
     var longitude: String = ""
     var latitude: String = ""
     var datetime: String = ""
     var weatherLocationString = ""
-    
     var weatherDays: [lsWeatherReport] = []
     var backgroundWeatherDays: [lsWeatherReport] = []
-    
     var inSearchMode: Bool = false
     
+    // MARK: - public methods
     public func setID() -> String  {
         let id = lsHelper.getGUID()
         UserDefaults.standard.set(id, forKey: "instID")

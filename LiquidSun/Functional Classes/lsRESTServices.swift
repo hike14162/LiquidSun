@@ -2,8 +2,10 @@ import Foundation
 
 class lsRESTServices
 {
+    // MARK: - delegate member
     var delegate: lsRESTServicesDelegate?
     
+    // MARK: - Public methods
     func track(id: String, city: String, state: String, longitude: String, latitude: String, datetime: String) {
         // Create json Data
         let log: [String: Any] = ["ID":"\(id)", "City":"\(city)", "State":"\(state)", "Longitude":"\(longitude)", "Latitude":"\(latitude)", "DateTime":"\(datetime)"]

@@ -2,6 +2,7 @@ import WatchKit
 import Foundation
 
 class lswMainViewCont: WKInterfaceController  {
+    // MARK: - View Outlets
     @IBOutlet weak var currentTable: WKInterfaceTable!
     @IBOutlet weak var pastTable: WKInterfaceTable!
     @IBOutlet weak var weatherGroup: WKInterfaceGroup!
@@ -9,15 +10,17 @@ class lswMainViewCont: WKInterfaceController  {
     @IBOutlet weak var loadingSpinAnim: WKInterfaceGroup!
     @IBOutlet var iPhoneMessage: WKInterfaceGroup!
     
+    // MARK: - View Actions
     @IBAction func retryTap() {
         iPhoneFetch.beginTransfer()
     }
     
+    // MARK: - Member variables
     var lsData = lsModel.sharedInstance
     var iPhoneFetch = lswiPhoneFetch()
     var retryOk = false
     
-    
+    // MARK: - Overrides
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         iPhoneFetch.delegate = self
@@ -30,6 +33,7 @@ class lswMainViewCont: WKInterfaceController  {
         iPhoneFetch.beginTransfer()
     }
     
+    // MARK: - Public methods
     func startWait() {
         weatherGroup.setHidden(true)
         progressButton.setHidden(false)
@@ -128,6 +132,7 @@ class lswMainViewCont: WKInterfaceController  {
     }
 }
 
+// MARK: - lsLocationDelegate implementation
 extension lswMainViewCont: lsLocationDelegate {
     func locationDenied(id: String) {
     }
@@ -144,6 +149,7 @@ extension lswMainViewCont: lsLocationDelegate {
     }
 }
 
+// MARK: - lswWeatherDelegate implementation
 extension lswMainViewCont: lswWeatherDelegate {
     func weatherDataReceived(weatherData: [Data]) {
         updateWeatherData(weatherArr: weatherData)
