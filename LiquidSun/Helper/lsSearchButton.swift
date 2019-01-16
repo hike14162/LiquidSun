@@ -31,7 +31,7 @@ class lsSearchButton: UIBarButtonItem {
         let paths = [circlePath, handlePath]
         let myPath = UIBezierPath()
         for path in paths {
-            myPath.append(path) // THIS IS THE IMPORTANT PART
+            myPath.append(path) 
         }
 
         shapeLayer.fillColor = UIColor.clear.cgColor
