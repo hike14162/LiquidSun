@@ -73,7 +73,7 @@ extension lsLocation: CLLocationManagerDelegate {
             if let locObj = locationObj {
                 let coord = locObj.coordinate
                 let currentLoc: CLLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-                if let dlgt = delegate {
+                if let dlgt = delegate {                    
                     dlgt.locationFound(id: id, longitude: "\(currentLoc.coordinate.longitude)", latitude: "\(currentLoc.coordinate.latitude)")
                 }
             }

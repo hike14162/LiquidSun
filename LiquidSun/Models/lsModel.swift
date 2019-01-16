@@ -18,6 +18,7 @@ public class lsModel {
     var weatherDays: [lsWeatherReport] = []
     var backgroundWeatherDays: [lsWeatherReport] = []
     var inSearchMode: Bool = false
+    var GMTOffsetSeconds: Int = 0
     
     // MARK: - public methods
     public func setID() -> String  {

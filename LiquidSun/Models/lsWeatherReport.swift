@@ -22,6 +22,7 @@ public class lsWeatherReport {
     public var sunriseTime: Date
     public var sunsetTime: Date
     public var data = Data()
+    public var forecast: [lsWeatherForecast]
     
     //MARK: - Inits
     init(jsonData: Data) {
@@ -44,7 +45,8 @@ public class lsWeatherReport {
         cloudCover = 0.0
         sunriseTime = Date(timeIntervalSince1970: Double(0.0))
         sunsetTime = Date(timeIntervalSince1970: Double(0.0))
-
+        forecast = []
+        
         do {
             if let fullDoc = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] {
                 if let json = fullDoc["currently"] as? [String: Any] {
@@ -94,6 +96,7 @@ public class lsWeatherReport {
         cloudCover = json["cloudCover"] as? Double ?? 0.0
         sunriseTime = Date(timeIntervalSince1970: Double((json["sunriseTime"] as? Double) ?? 0.0))
         sunsetTime = Date(timeIntervalSince1970: Double((json["sunsetTime"] as? Double) ?? 0.0))
+        forecast = []
     }
     
     // MARK: - Get Methods

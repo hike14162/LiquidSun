@@ -1,4 +1,6 @@
 import UIKit
+import StoreKit
+import CoreLocation
 
 public class Sunshine: UIViewController {
     
@@ -8,6 +10,7 @@ public class Sunshine: UIViewController {
     @IBOutlet weak var loadLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var trendTable: UITableView!
+    @IBOutlet weak var forecastView: UICollectionView!
     @IBOutlet weak var loadingImage: UIImageView!
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var currentHumidityLabel: UILabel!
@@ -29,11 +32,11 @@ public class Sunshine: UIViewController {
     @IBOutlet weak var windLeadingEdge: NSLayoutConstraint!
     @IBOutlet weak var dewPointLeadingEdge: NSLayoutConstraint!
     @IBOutlet weak var visibilityLeadingEdge: NSLayoutConstraint!
+    @IBOutlet weak var locationButton: lsLocationButton!
+    @IBOutlet weak var searchButton: lsSearchButton!
     
     // MARK: - View Actions
     @IBAction func gotoCurrentTap(_ sender: Any) {
-        lsData.inSearchMode = false
-        reAquireWeather()
     }
     
     @IBAction func creditTap(_ sender: Any) {
@@ -47,11 +50,18 @@ public class Sunshine: UIViewController {
     private var watchSession: lsWatchSession?
     private var currentLocation: lsLocation?
     private var weatherInfo: lsWeather?
-
+    
+    // MARK: - private constants
+    private let userDefaults = UserDefaults.standard
+    private let entriesKey = "entriesCount"
+    
     // MARK: -  Overrides from UIViewController
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        locationButton.delegate = self
+        searchButton.delegate = self
+        
         currentLocation = lsLocation()
         currentLocation?.delegate = self
 
@@ -70,6 +80,7 @@ public class Sunshine: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
         currentLocation?.startLocation()
     }
 
@@ -103,9 +114,26 @@ public class Sunshine: UIViewController {
             visibilityLeadingEdge.constant = 50
         }
         trendTable.reloadData()
+        forecastView.reloadData()
     }
 
     // MARK: -  view manipulation methods methods
+    private func checkForReview() {
+        var currentCount = userDefaults.integer(forKey: entriesKey)
+        if currentCount > 10 {
+            currentCount = 0
+            userDefaults.set(currentCount, forKey: entriesKey)
+            let callDelayTimer = Timer(timeInterval: 8.0, target: self, selector:#selector(self.onDelayTick(_:)), userInfo: nil, repeats: false)
+            RunLoop.main.add(callDelayTimer, forMode: RunLoopMode.defaultRunLoopMode)
+        }
+        userDefaults.set(currentCount + 1, forKey: entriesKey)
+    }
+    
+    @objc func onDelayTick(_ timer: Timer) {
+        timer.invalidate()
+        SKStoreReviewController.requestReview()
+    }
+    
     private func reAquireWeather() {
         if (lsData.inSearchMode){
             resetScreen()
@@ -159,29 +187,30 @@ public class Sunshine: UIViewController {
         loadingView.isHidden = true
         
         iconImage.image = UIImage(named: lsData.weatherDays[0].icon)
+        var windDir = "N"
         
         if ((lsData.weatherDays[0].windBearing > 337.5) || (lsData.weatherDays[0].windBearing <= 22.5)) {
-            currentCompassImage.image = UIImage(named: "cp S")
+            windDir = "S"
         } else if((lsData.weatherDays[0].windBearing > 22.5) && (lsData.weatherDays[0].windBearing <= 67.5)) {
-            currentCompassImage.image = UIImage(named: "cp SW")
+            windDir = "SW"
         } else if((lsData.weatherDays[0].windBearing > 67.5) && (lsData.weatherDays[0].windBearing <= 112.5)) {
-            currentCompassImage.image = UIImage(named: "cp W")
+            windDir = "W"
         } else if((lsData.weatherDays[0].windBearing > 112.5) && (lsData.weatherDays[0].windBearing <= 157.5)) {
-            currentCompassImage.image = UIImage(named: "cp NW")
+            windDir = "NW"
         } else if((lsData.weatherDays[0].windBearing > 157.5) && (lsData.weatherDays[0].windBearing <= 202.5)) {
-            currentCompassImage.image = UIImage(named: "cp N")
+            windDir = "N"
         } else if((lsData.weatherDays[0].windBearing > 202.5) && (lsData.weatherDays[0].windBearing <= 247.5)) {
-            currentCompassImage.image = UIImage(named: "cp NE")
+            windDir = "NE"
         } else if((lsData.weatherDays[0].windBearing > 247.5) && (lsData.weatherDays[0].windBearing <= 292.5)) {
-            currentCompassImage.image = UIImage(named: "cp E")
+            windDir = "E"
         } else if((lsData.weatherDays[0].windBearing > 292.5) && (lsData.weatherDays[0].windBearing <= 337.5)) {
-            currentCompassImage.image = UIImage(named: "cp SE")
+            windDir = "SE"
         }
         
         currentTempLabel.text = "\(lsHelper.doubleToString(lsData.weatherDays[0].temperature,decimalPlaces: 1))\u{00B0}"
         currentFeelsLikeLabel.text = "\(lsHelper.doubleToString(lsData.weatherDays[0].apparentTemperature,decimalPlaces: 1))\u{00B0}"
         currentHumidityLabel.text = "\(lsHelper.doubleToString(lsData.weatherDays[0].humidity*100,decimalPlaces: 1))%"
-        currentWindLabel.text = "\(lsHelper.doubleToString(lsData.weatherDays[0].windSpeed,decimalPlaces: 1)) mph"
+        currentWindLabel.text = "\(windDir) \(lsHelper.doubleToString(lsData.weatherDays[0].windSpeed,decimalPlaces: 1)) mph"
         currentGustLabel.text = "\(lsHelper.doubleToString(lsData.weatherDays[0].windGust,decimalPlaces: 1)) mph"
         currentSummaryLabel.text = lsData.weatherDays[0].summary
         currentHighTempLabel.text = "\(lsHelper.doubleToString(lsData.weatherDays[0].temperatureHigh,decimalPlaces: 1))\u{00B0}"
@@ -195,9 +224,9 @@ public class Sunshine: UIViewController {
         currentSunsetCoverLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunsetTime))"
         currentSunriseLabel.text = "\(lsHelper.DateToTimeString(lsData.weatherDays[0].sunriseTime))"
         
-//        webSvcs.track(id: lsData.getID(), city: lsData.city, state: lsData.state, longitude: lsData.longitude, latitude: lsData.latitude, datetime: "\(Int32(Date().timeIntervalSince1970))" )
-        
         adjustSEConstraints()
+        
+        checkForReview()
     }
 }
 
@@ -208,11 +237,23 @@ extension Sunshine: lsSearchDelegate {
         lsData.latitude = latitude
         lsData.city = city
         lsData.state = state
-        if let wInfo = weatherInfo {
-            wInfo.getWeather(longitude: longitude, latitude: latitude)
-            self.title = "\(city), \(state)"
-            self.loadLabel.text = "Retrieving weather data for \(city), \(state)"
-
+                
+        let loc = CLLocation(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
+        CLGeocoder().reverseGeocodeLocation(loc) { (placemarks, error) in
+            if let pmks = placemarks {
+                let pm = pmks[0] as CLPlacemark
+                if let tz = pm.timeZone {
+                    let localGMT = TimeZone.current.secondsFromGMT() / 3600
+                    let searchGMT = (tz.secondsFromGMT()/3600)
+                    self.lsData.GMTOffsetSeconds = (localGMT - searchGMT) * 3600 * -1
+                    
+                    if let wInfo = self.weatherInfo {
+                        wInfo.getWeather(longitude: longitude, latitude: latitude)
+                        self.title = "\(city), \(state)"
+                        self.loadLabel.text = "Retrieving weather data for \(city), \(state)"
+                    }
+                }
+            }
         }
     }
 }
@@ -271,3 +312,15 @@ extension Sunshine: lsWeatherDelegate {
 
 }
 
+extension Sunshine: lsLocationButtonDelegate, lsSearchButtonDelegate {
+    func searchRequested(_sender: Any) {
+        performSegue(withIdentifier: "searchSegue", sender: self)
+    }
+    
+    func locationRequested(_sender: Any) {
+        lsData.inSearchMode = false
+        reAquireWeather()
+    }
+    
+    
+}

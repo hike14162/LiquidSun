@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521702C521E557400091A3F5 /* lsLocationSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702C421E557400091A3F5 /* lsLocationSelectDelegate.swift */; };
+		521702C721E5574C0091A3F5 /* lsLocationSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702C621E5574C0091A3F5 /* lsLocationSelectDelegate.swift */; };
+		521702CA21E5AAB50091A3F5 /* lsWeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702C921E5AAB50091A3F5 /* lsWeatherForecast.swift */; };
+		521702CC21E655660091A3F5 /* lsWeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702CB21E655650091A3F5 /* lsWeatherForecast.swift */; };
+		5217033021EAA77B0091A3F5 /* lsForecastCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5217032F21EAA77B0091A3F5 /* lsForecastCollection.swift */; };
 		521B62772176CEC600E71B45 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521B62752176CEC600E71B45 /* Interface.storyboard */; };
 		521B62792176CEC900E71B45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521B62782176CEC900E71B45 /* Assets.xcassets */; };
 		521B62802176CEC900E71B45 /* LiquidSunWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 521B627F2176CEC900E71B45 /* LiquidSunWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -27,7 +32,6 @@
 		526E6F2B2180CB6100EDB68E /* lsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526E6F2A2180CB6100EDB68E /* lsLocation.swift */; };
 		526E6F2D2180CD0000EDB68E /* lsLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526E6F2C2180CD0000EDB68E /* lsLocationDelegate.swift */; };
 		526E6F2F2180D86600EDB68E /* lsWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526E6F2E2180D86600EDB68E /* lsWeather.swift */; };
-		526E6F332180DBA300EDB68E /* lsRESTServicesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526E6F322180DBA300EDB68E /* lsRESTServicesDelegate.swift */; };
 		527A2A4F21835F7F00A6025F /* weatherWait.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527A2A4E21835F7F00A6025F /* weatherWait.xcassets */; };
 		527A2A5E2186715800A6025F /* lsWeatherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A2A5D2186715700A6025F /* lsWeatherDelegate.swift */; };
 		527A2A62218782EA00A6025F /* lsWeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A2A61218782EA00A6025F /* lsWeatherReport.swift */; };
@@ -51,9 +55,10 @@
 		52A1DB96213F0F2100B7B904 /* lsSearchResultsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1DB95213F0F2100B7B904 /* lsSearchResultsTable.swift */; };
 		52A1DB98213F0F4100B7B904 /* lsSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1DB97213F0F4100B7B904 /* lsSearchResultsView.swift */; };
 		52B192B3213F3B5900B03723 /* lsSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B192B2213F3B5900B03723 /* lsSearchDelegate.swift */; };
-		52B192B5213F662B00B03723 /* lsLocationSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B192B4213F662B00B03723 /* lsLocationSelectDelegate.swift */; };
 		52F29A87212E1FF1008CBD56 /* artwork.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52F29A86212E1FF1008CBD56 /* artwork.xcassets */; };
 		52F29A8B212F2C98008CBD56 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F29A89212F2C98008CBD56 /* Reachability.m */; };
+		52F39FC221EFA916002DDE94 /* lsSearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F39FC121EFA916002DDE94 /* lsSearchButton.swift */; };
+		52F92AAB21DE54720093C61E /* lsLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F92AAA21DE54720093C61E /* lsLocationButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +104,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		521702C421E557400091A3F5 /* lsLocationSelectDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lsLocationSelectDelegate.swift; sourceTree = "<group>"; };
+		521702C621E5574C0091A3F5 /* lsLocationSelectDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = lsLocationSelectDelegate.swift; path = LiquidSun/Delegates/lsLocationSelectDelegate.swift; sourceTree = SOURCE_ROOT; };
+		521702C821E55BC60091A3F5 /* json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = json.json; sourceTree = "<group>"; };
+		521702C921E5AAB50091A3F5 /* lsWeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsWeatherForecast.swift; sourceTree = "<group>"; };
+		521702CB21E655650091A3F5 /* lsWeatherForecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = lsWeatherForecast.swift; path = LiquidSun/Models/lsWeatherForecast.swift; sourceTree = SOURCE_ROOT; };
+		5217032F21EAA77B0091A3F5 /* lsForecastCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsForecastCollection.swift; sourceTree = "<group>"; };
 		521B62732176CEC600E71B45 /* LiquidSunWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiquidSunWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521B62762176CEC600E71B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		521B62782176CEC900E71B45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,7 +132,6 @@
 		526E6F2A2180CB6100EDB68E /* lsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsLocation.swift; sourceTree = "<group>"; };
 		526E6F2C2180CD0000EDB68E /* lsLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsLocationDelegate.swift; sourceTree = "<group>"; };
 		526E6F2E2180D86600EDB68E /* lsWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsWeather.swift; sourceTree = "<group>"; };
-		526E6F322180DBA300EDB68E /* lsRESTServicesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsRESTServicesDelegate.swift; sourceTree = "<group>"; };
 		527A2A4E21835F7F00A6025F /* weatherWait.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = weatherWait.xcassets; sourceTree = "<group>"; };
 		527A2A5D2186715700A6025F /* lsWeatherDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = lsWeatherDelegate.swift; path = "LiquidSunWatch Extension/Delegates/lsWeatherDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		527A2A61218782EA00A6025F /* lsWeatherReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = lsWeatherReport.swift; path = LiquidSun/Models/lsWeatherReport.swift; sourceTree = SOURCE_ROOT; };
@@ -147,11 +157,12 @@
 		52A1DB95213F0F2100B7B904 /* lsSearchResultsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchResultsTable.swift; sourceTree = "<group>"; };
 		52A1DB97213F0F4100B7B904 /* lsSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchResultsView.swift; sourceTree = "<group>"; };
 		52B192B2213F3B5900B03723 /* lsSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchDelegate.swift; sourceTree = "<group>"; };
-		52B192B4213F662B00B03723 /* lsLocationSelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsLocationSelectDelegate.swift; sourceTree = "<group>"; };
 		52F29A86212E1FF1008CBD56 /* artwork.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = artwork.xcassets; sourceTree = "<group>"; };
 		52F29A88212F2C97008CBD56 /* LiquidSun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiquidSun-Bridging-Header.h"; sourceTree = "<group>"; };
 		52F29A89212F2C98008CBD56 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		52F29A8A212F2C98008CBD56 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		52F39FC121EFA916002DDE94 /* lsSearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchButton.swift; sourceTree = "<group>"; };
+		52F92AAA21DE54720093C61E /* lsLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsLocationButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				527A2A752187961500A6025F /* lsModel.swift */,
+				521702CB21E655650091A3F5 /* lsWeatherForecast.swift */,
 				527A2A61218782EA00A6025F /* lsWeatherReport.swift */,
 			);
 			path = Model;
@@ -223,6 +235,7 @@
 		526E6F16217E5D7200EDB68E /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				521702C621E5574C0091A3F5 /* lsLocationSelectDelegate.swift */,
 				526E6F17217E5D8800EDB68E /* lswWeatherDelegate.swift */,
 				527A2A792187A15100A6025F /* lsLocationDelegate.swift */,
 				527A2A662187875C00A6025F /* lsRESTServicesDelegate.swift */,
@@ -244,10 +257,13 @@
 		526E6F292180CB2200EDB68E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				527A2A6F2187937800A6025F /* lsHelper.swift */,
 				52F29A8A212F2C98008CBD56 /* Reachability.h */,
 				52F29A89212F2C98008CBD56 /* Reachability.m */,
-				527A2A6F2187937800A6025F /* lsHelper.swift */,
 				527A2A6A2187902200A6025F /* lsiOSHelper.swift */,
+				52F92AAA21DE54720093C61E /* lsLocationButton.swift */,
+				52F39FC121EFA916002DDE94 /* lsSearchButton.swift */,
+				521702C821E55BC60091A3F5 /* json.json */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -312,6 +328,7 @@
 				528AD029212B83C30094374E /* lsModel.swift */,
 				527A2A732187948200A6025F /* lsSearchState.swift */,
 				528AD023212A39830094374E /* lsWeatherReport.swift */,
+				521702C921E5AAB50091A3F5 /* lsWeatherForecast.swift */,
 				528AD027212B6E820094374E /* lsEnums.swift */,
 			);
 			path = Models;
@@ -324,6 +341,7 @@
 				528AD02B212C9C690094374E /* lsTrendTable.swift */,
 				52A1DB97213F0F4100B7B904 /* lsSearchResultsView.swift */,
 				52A1DB95213F0F2100B7B904 /* lsSearchResultsTable.swift */,
+				5217032F21EAA77B0091A3F5 /* lsForecastCollection.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -342,11 +360,10 @@
 			children = (
 				528AD003212A35430094374E /* AppDelegate.swift */,
 				52B192B2213F3B5900B03723 /* lsSearchDelegate.swift */,
-				52B192B4213F662B00B03723 /* lsLocationSelectDelegate.swift */,
 				527A2A5D2186715700A6025F /* lsWeatherDelegate.swift */,
 				526E6F26217FC53400EDB68E /* lsWatchDelegate.swift */,
+				521702C421E557400091A3F5 /* lsLocationSelectDelegate.swift */,
 				526E6F2C2180CD0000EDB68E /* lsLocationDelegate.swift */,
-				526E6F322180DBA300EDB68E /* lsRESTServicesDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -504,8 +521,10 @@
 				527A2A72218793F100A6025F /* lsHelper.swift in Sources */,
 				526E6F15217E5C6900EDB68E /* lswiPhoneFetch.swift in Sources */,
 				521B629B217793E600E71B45 /* lswPastCell.swift in Sources */,
+				521702CC21E655660091A3F5 /* lsWeatherForecast.swift in Sources */,
 				521B62852176CEC900E71B45 /* lswMainViewCont.swift in Sources */,
 				527A2A62218782EA00A6025F /* lsWeatherReport.swift in Sources */,
+				521702C721E5574C0091A3F5 /* lsLocationSelectDelegate.swift in Sources */,
 				527A2A672187875C00A6025F /* lsRESTServicesDelegate.swift in Sources */,
 				527A2A762187961500A6025F /* lsModel.swift in Sources */,
 				527A2A652187871500A6025F /* lsRESTServices.swift in Sources */,
@@ -520,13 +539,13 @@
 				52A1DB98213F0F4100B7B904 /* lsSearchResultsView.swift in Sources */,
 				527A2A742187948200A6025F /* lsSearchState.swift in Sources */,
 				526E6F2B2180CB6100EDB68E /* lsLocation.swift in Sources */,
+				52F92AAB21DE54720093C61E /* lsLocationButton.swift in Sources */,
 				526E6F27217FC53400EDB68E /* lsWatchDelegate.swift in Sources */,
 				527A2A6B2187902200A6025F /* lsiOSHelper.swift in Sources */,
 				526E6F2F2180D86600EDB68E /* lsWeather.swift in Sources */,
 				52F29A8B212F2C98008CBD56 /* Reachability.m in Sources */,
-				526E6F332180DBA300EDB68E /* lsRESTServicesDelegate.swift in Sources */,
 				527A2A5E2186715800A6025F /* lsWeatherDelegate.swift in Sources */,
-				52B192B5213F662B00B03723 /* lsLocationSelectDelegate.swift in Sources */,
+				521702C521E557400091A3F5 /* lsLocationSelectDelegate.swift in Sources */,
 				52B192B3213F3B5900B03723 /* lsSearchDelegate.swift in Sources */,
 				528AD02A212B83C30094374E /* lsModel.swift in Sources */,
 				528AD006212A35430094374E /* Sunshine.swift in Sources */,
@@ -534,10 +553,13 @@
 				52A1DB96213F0F2100B7B904 /* lsSearchResultsTable.swift in Sources */,
 				528AD004212A35430094374E /* AppDelegate.swift in Sources */,
 				528AD02C212C9C690094374E /* lsTrendTable.swift in Sources */,
+				52F39FC221EFA916002DDE94 /* lsSearchButton.swift in Sources */,
+				521702CA21E5AAB50091A3F5 /* lsWeatherForecast.swift in Sources */,
 				5229B9302134A0F000FD4504 /* lsRESTServices.swift in Sources */,
 				526E6F2D2180CD0000EDB68E /* lsLocationDelegate.swift in Sources */,
 				527A2A702187937800A6025F /* lsHelper.swift in Sources */,
 				526E6F25217FC2FA00EDB68E /* lsWatchSession.swift in Sources */,
+				5217033021EAA77B0091A3F5 /* lsForecastCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,7 +817,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 46527JQ8T6;
 				INFOPLIST_FILE = LiquidSun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -818,7 +840,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 46527JQ8T6;
 				INFOPLIST_FILE = LiquidSun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

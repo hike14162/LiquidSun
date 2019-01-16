@@ -36,6 +36,32 @@ class lsTrendTable: UITableViewController {
         return headerView
     }
     
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 377, height: 60))
+        let image = UIImage(named: "pbds")
+        
+        let imageView = UIImageView(image: image)
+        imageView.bounds = CGRect(x: 0, y: 0, width: 188, height: 30)
+        imageView.frame = CGRect(x: 10, y: 10, width: 188, height: 30)
+        footerView.addSubview(imageView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(darkSkyTap(_:)))
+        footerView.addGestureRecognizer(tap)
+        
+        
+        return footerView
+    }
+    
+    @objc func darkSkyTap(_ sender: UITapGestureRecognizer) {
+        if let url = URL(string: "https://darksky.net/poweredby/") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }

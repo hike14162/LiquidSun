@@ -35,6 +35,48 @@ public class lsHelper {
         return "\(yearStg)"
     }
     
+    public class func DateToGMTString(_ date: Date)-> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "ZZZZ"
+        let yearStg = formatter.string(from: date)
+        
+        return "\(yearStg)"
+    }
+
+    public class func DateToDOWString(_ date: Date)-> String {
+        let cal = Calendar(identifier: .gregorian)
+        let weekDay = cal.component(.weekday, from: date)
+
+        var dow = ""
+        switch weekDay {
+        case 1:
+            dow = "Sun"
+        case 2:
+            dow = "Mon"
+        case 3:
+            dow = "Tue"
+        case 4:
+            dow = "Wed"
+        case 5:
+            dow = "Thr"
+        case 6:
+            dow = "Fri"
+        case 7:
+            dow = "Sat"
+        default:
+            dow = ""
+        }
+//        print("\(DateToDateTimeString(date)) ")        
+        return "\(dow) "
+    }
+    
+    public class func DateToDOMString(_ date: Date)-> String {
+        let cal = Calendar(identifier: .gregorian)
+        let mDay = cal.component(.day, from: date)
+        
+        return "\(mDay)"
+    }
+
     public class func DateToDayString(_ date: Date)-> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
@@ -91,4 +133,7 @@ public class lsHelper {
         return UUID().uuidString
     }
 
+    public class func DoubleToWholeString(value: Double)->String {
+        return "\(Int(value))"
+    }
 }

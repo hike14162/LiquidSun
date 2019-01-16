@@ -19,6 +19,7 @@ class lswMainViewCont: WKInterfaceController  {
     var lsData = lsModel.sharedInstance
     var iPhoneFetch = lswiPhoneFetch()
     var retryOk = false
+    var iPhoneIsReachable = true
     
     // MARK: - Overrides
     override func awake(withContext context: Any?) {
@@ -141,11 +142,9 @@ extension lswMainViewCont: lsLocationDelegate {
     }
     
     func locationFound(id: String, longitude: String, latitude: String) {
-        print("\(longitude)  \(latitude)")
     }
     
     func locationString(id: String, city: String, state: String) {
-        print("\(city), \(state)")
     }
 }
 
@@ -160,11 +159,19 @@ extension lswMainViewCont: lswWeatherDelegate {
     }
     
     func iPhoneNotReachable() {
-        iPhoneMessage.setHidden(false)
+        iPhoneIsReachable = false
+        let warnDelayTimer = Timer(timeInterval: 2.0, target: self, selector:#selector(self.onDelayTick(_:)), userInfo: nil, repeats: false)
+        RunLoop.main.add(warnDelayTimer, forMode: .default)
+    }
+    
+    @objc func onDelayTick(_ timer: Timer) {
+        if !iPhoneIsReachable {
+            iPhoneMessage.setHidden(false)
+        }
     }
     
     func iPhoneReachable() {
+        iPhoneIsReachable = true
         iPhoneMessage.setHidden(true)
     }
-    
 }

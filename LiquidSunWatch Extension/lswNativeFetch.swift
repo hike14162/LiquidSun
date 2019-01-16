@@ -1,11 +1,7 @@
 import Foundation
 import CoreLocation
 
-class lswNativeFetch: NSObject, CLLocationManagerDelegate, lsRESTServicesDelegate {
-    func weatherDayReturned(weatherDay: lsWeatherReport) {
-        print(weatherDay.temperature)
-    }
-    
+class lswNativeFetch: NSObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager = CLLocationManager()
     var delegate: lsLocationDelegate! = nil
 
