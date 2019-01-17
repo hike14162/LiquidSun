@@ -16,17 +16,17 @@ class lsSearchButton: UIBarButtonItem {
     }
     
     private func drawButton(color: UIColor) {
-        customView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        customView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 30))
         customView?.backgroundColor = .clear
         customView?.layer.backgroundColor = UIColor.clear.cgColor
         customView?.layer.addSublayer(shapeLayer)
         
         //draw the path
-        let circlePath = UIBezierPath(ovalIn: CGRect(x: 2, y: 2, width: 12, height: 12))
+        let circlePath = UIBezierPath(ovalIn: CGRect(x: 15, y: 8, width: 12, height: 12))
 
         let handlePath = UIBezierPath()
-        handlePath.move(to:    CGPoint(x: 12, y: 12))
-        handlePath.addLine(to: CGPoint(x: 19,  y: 19))
+        handlePath.move(to:    CGPoint(x: 25, y: 18))
+        handlePath.addLine(to: CGPoint(x: 32,  y: 25))
 
         let paths = [circlePath, handlePath]
         let myPath = UIBezierPath()

@@ -16,19 +16,19 @@ class lsLocationButton: UIBarButtonItem {
     private let shapeLayer = CAShapeLayer()
 
     private func drawButton(color: UIColor) {
-        customView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        customView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 30))
         customView?.backgroundColor = .clear
         customView?.layer.backgroundColor = UIColor.clear.cgColor
-        
+
         customView?.layer.addSublayer(shapeLayer)
         
         //draw the path
         let path = UIBezierPath()
-        path.move(to:    CGPoint(x: 20, y: 3))
-        path.addLine(to: CGPoint(x: 4,  y: 12))
-        path.addLine(to: CGPoint(x: 12, y: 12))
-        path.addLine(to: CGPoint(x: 12, y: 20))
-        path.addLine(to: CGPoint(x: 20, y: 3))
+        path.move(to:    CGPoint(x: 28, y: 9))
+        path.addLine(to: CGPoint(x: 12,  y: 18))
+        path.addLine(to: CGPoint(x: 20, y: 18))
+        path.addLine(to: CGPoint(x: 20, y: 26))
+        path.addLine(to: CGPoint(x: 28, y: 9))
         
         shapeLayer.path = path.cgPath
         shapeLayer.fillColor = color.cgColor
