@@ -38,9 +38,9 @@ class lsSearchButton: UIBarButtonItem {
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.lineWidth = 2.5
         shapeLayer.path = myPath.cgPath
-        shapeLayer.lineJoin = kCALineCapRound
-        shapeLayer.lineCap = kCALineCapRound
-        
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        //CAShapeLayerLineCap.round
         let tapGest = UITapGestureRecognizer(target: self, action: #selector(buttonTapped(_:)))
         
         if let btnView = customView {

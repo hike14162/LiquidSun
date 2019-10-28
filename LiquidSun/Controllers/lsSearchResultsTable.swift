@@ -23,7 +23,7 @@ class lsSearchResultsTable: UITableViewController {
     {
         var cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as? searchCell
         if cell == nil {
-            cell = searchCell(style: UITableViewCellStyle.value1, reuseIdentifier: "searchCell")
+            cell = searchCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "searchCell")
         }
         
         if let currCell = cell {

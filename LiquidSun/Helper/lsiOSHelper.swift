@@ -16,11 +16,11 @@ open class lsiOSHelper {
         if (light) {
             foreColor = lsHelper.darkBlueColor()
         }
-        return NSDictionary(objects: [foreColor, shadow, UIFont(name: "Apple SD Gothic Neo", size: 20.0)!], forKeys: [NSAttributedStringKey.foregroundColor as NSCopying, NSAttributedStringKey.shadow as NSCopying, NSAttributedStringKey.font as NSCopying])
+        return NSDictionary(objects: [foreColor, shadow, UIFont(name: "Apple SD Gothic Neo", size: 20.0)!], forKeys: [NSAttributedString.Key.foregroundColor as NSCopying, NSAttributedString.Key.shadow as NSCopying, NSAttributedString.Key.font as NSCopying])
     }
     
     open class func showAlertMessage(view: UIViewController, title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         view.present(alert, animated: true, completion: nil)
     }

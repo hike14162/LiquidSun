@@ -25,7 +25,7 @@ class lsSearchResultsView: UIViewController, MKLocalSearchCompleterDelegate, UIS
             navigationItem.leftBarButtonItems = [cancelButton]
         } else {
             self.navigationController?.navigationBar.barTintColor = UIColor.groupTableViewBackground
-            self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: true) as? [NSAttributedStringKey : Any])
+            self.navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: true) as? [NSAttributedString.Key : Any])
 
         }
 

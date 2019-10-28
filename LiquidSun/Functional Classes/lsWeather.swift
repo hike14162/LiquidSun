@@ -92,7 +92,7 @@ class lsWeather: NSObject {
             
             // retry timer
             let nwTimer = Timer(timeInterval: 1.0, target: self, selector:#selector(self.onNetworkRetryTick(_:)), userInfo: nil, repeats: true)
-            RunLoop.main.add(nwTimer, forMode: RunLoopMode.defaultRunLoopMode)
+            RunLoop.main.add(nwTimer, forMode: RunLoop.Mode.default)
         }
 
     }

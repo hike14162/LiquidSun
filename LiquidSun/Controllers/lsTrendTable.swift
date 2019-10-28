@@ -58,7 +58,7 @@ class lsTrendTable: UITableViewController {
     
     @objc func darkSkyTap(_ sender: UITapGestureRecognizer) {
         if let url = URL(string: "https://darksky.net/poweredby/") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
     }
     
@@ -69,7 +69,7 @@ class lsTrendTable: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "trendCell") as? trendCell
         if (cell == nil) {
-            cell = trendCell(style: UITableViewCellStyle.value1, reuseIdentifier: "trendCell")
+            cell = trendCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "trendCell")
         }
         
         //Set the cell values
@@ -159,4 +159,9 @@ class trendCell: UITableViewCell {
     @IBOutlet weak var dewPointLeadingEdge: NSLayoutConstraint!
     @IBOutlet weak var visibilityLeadingEdge: NSLayoutConstraint!
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -41,7 +41,7 @@ public class Sunshine: UIViewController {
     
     @IBAction func creditTap(_ sender: Any) {
         if let url = URL(string: "https://darksky.net/poweredby/") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
     }
     
@@ -75,11 +75,11 @@ public class Sunshine: UIViewController {
         loadingIndicator.isHidden = false
         loadingView.isHidden = false
 
-        navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: false) as? [NSAttributedStringKey : Any])
+        navigationController?.navigationBar.titleTextAttributes = (lsiOSHelper.getTitleBarAttributes(light: false) as? [NSAttributedString.Key : Any])
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.foregroundEntered(_:)), name: NSNotification.Name(rawValue: "foregroundEntered"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.adjustSEConstraints), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         currentLocation?.startLocation()
     }
@@ -124,7 +124,7 @@ public class Sunshine: UIViewController {
             currentCount = 0
             userDefaults.set(currentCount, forKey: entriesKey)
             let callDelayTimer = Timer(timeInterval: 8.0, target: self, selector:#selector(self.onDelayTick(_:)), userInfo: nil, repeats: false)
-            RunLoop.main.add(callDelayTimer, forMode: RunLoopMode.defaultRunLoopMode)
+            RunLoop.main.add(callDelayTimer, forMode: RunLoop.Mode.default)
         }
         userDefaults.set(currentCount + 1, forKey: entriesKey)
     }
@@ -323,4 +323,9 @@ extension Sunshine: lsLocationButtonDelegate, lsSearchButtonDelegate {
     }
     
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
