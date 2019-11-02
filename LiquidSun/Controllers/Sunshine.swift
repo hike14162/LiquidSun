@@ -305,7 +305,7 @@ extension Sunshine: lsWeatherDelegate {
         
     }
     
-    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport]) {
+    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport], averageTemp: Double) {
         lsData.weatherDays = weatherDays
         populateScreen()
     }
@@ -319,6 +319,8 @@ extension Sunshine: lsLocationButtonDelegate, lsSearchButtonDelegate {
     
     func locationRequested(_sender: Any) {
         lsData.inSearchMode = false
+        lsData.GMTOffsetSeconds = 0
+        
         reAquireWeather()
     }
     

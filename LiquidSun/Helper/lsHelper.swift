@@ -66,7 +66,6 @@ public class lsHelper {
         default:
             dow = ""
         }
-//        print("\(DateToDateTimeString(date)) ")        
         return "\(dow) "
     }
     
