@@ -120,7 +120,7 @@ extension lsWatchSession: lsWeatherDelegate {
     func networkReachable() {
     }
     
-    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport]) {
+    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport], averageTemp: Double) {
         data.backgroundWeatherDays = weatherDays
         pushDataToWatch(data: data)
     }

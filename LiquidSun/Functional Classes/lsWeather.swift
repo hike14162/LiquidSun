@@ -8,7 +8,10 @@ class lsWeather: NSObject {
     var longitude = ""
     var latitude = ""
     var id = ""
+    let historyDays = 5
     
+    var totalPastTemp = 0.0
+
 // MARK: - Overrides
     override init() {
         super.init()
@@ -19,13 +22,29 @@ class lsWeather: NSObject {
         getWeather(longitude: longitude, latitude: latitude,id: "")
     }
     
-    func addWeatherResult(weatherDay: lsWeatherReport) {
+    func addWeatherResult(weatherDay: lsWeatherReport, isForecast: Bool) {
+        if !isForecast {
+            totalPastTemp += weatherDay.temperature
+        }
+        
         self.data.addWeatherDay(weather: weatherDay)
-        if self.data.weatherDays.count == 6 {
+        if (self.data.weatherDays.count == (self.historyDays + 1)) {
             if let dlgt = self.delegate {
-                dlgt.weatherRetrieved(id: id, weatherDays: self.data.weatherDays)
+                dlgt.weatherRetrieved(id: id, weatherDays: self.data.weatherDays, averageTemp: totalPastTemp / Double(self.historyDays))
+                self.totalPastTemp = 0
             }
         }
+    }
+    
+    func getWeatherHistory(longitude: String, latitude: String, daysToAdd: Int) {
+        webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: daysToAdd)) { (weatherDay, error) in
+            if let wDay = weatherDay {
+                self.addWeatherResult(weatherDay: wDay, isForecast: false)
+            } else if let err = error {
+                print(err.localizedDescription)
+            }
+        }
+
     }
     
     func getWeather(longitude: String, latitude: String, id: String) {
@@ -39,52 +58,16 @@ class lsWeather: NSObject {
             // get current weather
             webSvcs.getWeatherCurrentForecast(longitude: longitude, latitude: latitude) { (weatherDay, error) in
                 if let wDay = weatherDay {
-                    self.addWeatherResult(weatherDay: wDay)
+                    self.addWeatherResult(weatherDay: wDay, isForecast: true)
                 } else if let err = error {
                     print(err.localizedDescription)
                 }
             }
-            
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -1)) { (weatherDay, error) in
-                if let wDay = weatherDay {
-                    self.addWeatherResult(weatherDay: wDay)
-                } else if let err = error {
-                    print(err.localizedDescription)
-                }
-            }
-            
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -2)) { (weatherDay, error) in
-                if let wDay = weatherDay {
-                    self.addWeatherResult(weatherDay: wDay)
-                } else if let err = error {
-                    print(err.localizedDescription)
-                }
-            }
-            
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -3)) { (weatherDay, error) in
-                if let wDay = weatherDay {
-                    self.addWeatherResult(weatherDay: wDay)
-                } else if let err = error {
-                    print(err.localizedDescription)
-                }
-            }
-            
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -4)) { (weatherDay, error) in
-                if let wDay = weatherDay {
-                    self.addWeatherResult(weatherDay: wDay)
-                } else if let err = error {
-                    print(err.localizedDescription)
-                }
-            }
-            
-            webSvcs.getWeatherHistory(longitude: longitude, latitude: latitude, date: lsHelper.DateByAddingYears(daysToAdd: -5)) { (weatherDay, error) in
-                if let wDay = weatherDay {
-                    self.addWeatherResult(weatherDay: wDay)
-                } else if let err = error {
-                    print(err.localizedDescription)
-                }
-            }
-
+            getWeatherHistory(longitude: longitude, latitude: latitude, daysToAdd: -1)
+            getWeatherHistory(longitude: longitude, latitude: latitude, daysToAdd: -2)
+            getWeatherHistory(longitude: longitude, latitude: latitude, daysToAdd: -3)
+            getWeatherHistory(longitude: longitude, latitude: latitude, daysToAdd: -4)
+            getWeatherHistory(longitude: longitude, latitude: latitude, daysToAdd: -5)
         } else {
             if let dlgt = delegate {
                 dlgt.networkNotReachable()
