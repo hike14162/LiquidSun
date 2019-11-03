@@ -6,6 +6,9 @@ public class Sunshine: UIViewController {
     
 // MARK: - View Outlets
     @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var swingImage: UIImageView!
+    @IBOutlet weak var humidityImage: UIImageView!
+    @IBOutlet weak var feelsLikeImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
@@ -177,7 +180,7 @@ public class Sunshine: UIViewController {
         adjustSEConstraints()
     }
     
-    private func populateScreen() {
+    private func populateScreen(averages: lsTrend) {
         if let ws = watchSession {
             ws.pushLocationText(location: "\(lsData.city), \(lsData.state)")
             ws.pushDataToWatch(data: lsData)
@@ -186,9 +189,56 @@ public class Sunshine: UIViewController {
         loadingIndicator.stopAnimating()
         loadingView.isHidden = true
         
+        // temp Differences
+        let tempDiff = lsData.weatherDays[0].temperature - averages.averageTemperature
+        if tempDiff <= -6 {
+            swingImage.image = UIImage(named: "vert_cold2")
+        } else if ((tempDiff < -3) && (tempDiff > -6)) {
+            swingImage.image = UIImage(named: "vert_cold1")
+        } else if ((tempDiff >= -3) && (tempDiff < 3)) {
+            swingImage.image = UIImage(named: "vert_equal")
+        }
+        if ((tempDiff >= 3) && (tempDiff < 6)) {
+            swingImage.image = UIImage(named: "vert_hot1")
+        } else if tempDiff >= 6 {
+            swingImage.image = UIImage(named: "vert_hot2")
+        }
+        
+        // feels like differences
+        let feelDiff = lsData.weatherDays[0].apparentTemperature - averages.averageApparentTemperature
+        if feelDiff <= -6 {
+            feelsLikeImage.image = UIImage(named: "horiz_cold2")
+        } else if ((feelDiff < -3) && (feelDiff > -6)) {
+            feelsLikeImage.image = UIImage(named: "horiz_cold1")
+        } else if ((feelDiff >= -3) && (feelDiff < 3)) {
+            feelsLikeImage.image = UIImage(named: "horiz_equal")
+        }
+        if ((feelDiff >= 3) && (feelDiff < 6)) {
+            feelsLikeImage.image = UIImage(named: "horiz_hot1")
+        } else if feelDiff >= 6 {
+            feelsLikeImage.image = UIImage(named: "horiz_hot2")
+        }
+
+        // humidity differences
+        let humidDiff = (lsData.weatherDays[0].humidity - averages.averageHumidity) * 100
+        if humidDiff < -10 {
+            humidityImage.image = UIImage(named: "humid_dry2")
+        } else if ((humidDiff <= -10) && (humidDiff < -4)) {
+            humidityImage.image = UIImage(named: "humid_dry1")
+        } else if ((humidDiff <= -4) && (humidDiff < 4)) {
+            humidityImage.image = UIImage(named: "humid_equal")
+        } else if ((humidDiff <= 4) && (humidDiff < 10)) {
+            humidityImage.image = UIImage(named: "humid_wet1")
+        } else {
+            humidityImage.image = UIImage(named: "humid_wet2")
+        }
+
+//        humidityImage.isHidden = true
+        
+//        print("tmp \(tempDiff)  fl \(feelDiff)   hm \(humidDiff)")
+        
         iconImage.image = UIImage(named: lsData.weatherDays[0].icon)
         var windDir = "N"
-        
         if ((lsData.weatherDays[0].windBearing > 337.5) || (lsData.weatherDays[0].windBearing <= 22.5)) {
             windDir = "S"
         } else if((lsData.weatherDays[0].windBearing > 22.5) && (lsData.weatherDays[0].windBearing <= 67.5)) {
@@ -305,9 +355,9 @@ extension Sunshine: lsWeatherDelegate {
         
     }
     
-    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport], averageTemp: Double) {
+    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport], averages: lsTrend) {
         lsData.weatherDays = weatherDays
-        populateScreen()
+        populateScreen(averages: averages)
     }
 
 }

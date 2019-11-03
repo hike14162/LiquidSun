@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="04j-dC-4At">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="04j-dC-4At">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,20 +17,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-day" translatesAutoresizingMaskIntoConstraints="NO" id="QBP-vA-akD">
-                                <rect key="frame" x="16" y="72" width="100" height="100"/>
+                                <rect key="frame" x="16" y="52" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="4bN-Tg-oPk"/>
                                     <constraint firstAttribute="height" constant="100" id="Z7i-tD-8mp"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horiz_equal" translatesAutoresizingMaskIntoConstraints="NO" id="Fu4-EQ-55Z">
+                                <rect key="frame" x="157" y="107" width="40" height="7"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horiz_cold1" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-mm-eIH">
+                                <rect key="frame" x="157" y="164" width="40" height="7"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="HNe-uX-kqa"/>
+                                    <constraint firstAttribute="height" constant="7" id="HwQ-zg-n4N"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vert_equal" translatesAutoresizingMaskIntoConstraints="NO" id="i6I-n7-Gfa">
+                                <rect key="frame" x="110.66666666666667" y="85" width="10" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="BpZ-g4-xGo"/>
+                                    <constraint firstAttribute="height" constant="54" id="Vuh-sm-aBz"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8e-YR-1ER">
-                                <rect key="frame" x="279" y="109" width="32.666666666666686" height="18"/>
+                                <rect key="frame" x="279" y="89" width="32.666666666666686" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNw-BC-7Bi">
-                                <rect key="frame" x="279" y="87" width="32.666666666666686" height="24"/>
+                                <rect key="frame" x="279" y="67" width="32.666666666666686" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -41,13 +56,13 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE5-ne-c8Y">
-                                <rect key="frame" x="29.666666666666671" y="118" width="73" height="54"/>
+                                <rect key="frame" x="29.666666666666671" y="98" width="73" height="54"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="vBA-vw-LOS">
-                                <rect key="frame" x="16" y="173" width="136" height="24"/>
+                                <rect key="frame" x="16" y="153" width="136" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="PpU-wv-Kcr">
                                         <variation key="heightClass=regular-widthClass=regular" constant="150"/>
@@ -61,13 +76,13 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feels Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3b-uI-KbA">
-                                <rect key="frame" x="146" y="109" width="62" height="18"/>
+                                <rect key="frame" x="146" y="89" width="62" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFv-G1-tdP">
-                                <rect key="frame" x="160.66666666666666" y="87" width="32.666666666666657" height="24"/>
+                                <rect key="frame" x="160.66666666666666" y="67" width="32.666666666666657" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -76,13 +91,13 @@
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNS-t7-nh6">
-                                <rect key="frame" x="33" y="220" width="24.666666666666671" height="16"/>
+                                <rect key="frame" x="37" y="209" width="24.666666666666671" height="16"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkc-GL-dEm">
-                                <rect key="frame" x="28.999999999999996" y="196" width="32.666666666666657" height="24"/>
+                                <rect key="frame" x="33" y="185" width="32.666666666666657" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -91,13 +106,13 @@
                                 </variation>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JU2-Hx-OiO">
-                                <rect key="frame" x="164.66666666666666" y="220" width="25" height="18"/>
+                                <rect key="frame" x="164.66666666666666" y="209" width="25" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry2-J5-tdF">
-                                <rect key="frame" x="160.66666666666666" y="196" width="32.666666666666657" height="24"/>
+                                <rect key="frame" x="160.66666666666666" y="185" width="32.666666666666657" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -106,19 +121,19 @@
                                 </variation>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hightemp" translatesAutoresizingMaskIntoConstraints="NO" id="Dnx-Cf-IKs">
-                                <rect key="frame" x="16" y="210" width="11" height="26"/>
+                                <rect key="frame" x="16" y="190" width="15" height="35"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lowtemp" translatesAutoresizingMaskIntoConstraints="NO" id="oXh-ZI-8Ki">
-                                <rect key="frame" x="143.66666666666666" y="210" width="11" height="26"/>
+                                <rect key="frame" x="139.66666666666666" y="190" width="15" height="35"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Humidity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFQ-Ic-NjW">
-                                <rect key="frame" x="148.66666666666666" y="166" width="57" height="18"/>
+                                <rect key="frame" x="148.66666666666666" y="146" width="57" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIQ-PO-KsN">
-                                <rect key="frame" x="160.66666666666666" y="144" width="32.666666666666657" height="24"/>
+                                <rect key="frame" x="160.66666666666666" y="124" width="32.666666666666657" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -127,13 +142,13 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gusts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sn-R6-iRN">
-                                <rect key="frame" x="277.66666666666669" y="166" width="35.333333333333314" height="18"/>
+                                <rect key="frame" x="277.66666666666669" y="146" width="35.333333333333314" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qW7-C5-WyA">
-                                <rect key="frame" x="279" y="144" width="32.666666666666686" height="24"/>
+                                <rect key="frame" x="279" y="124" width="32.666666666666686" height="24"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -142,14 +157,14 @@
                                 </variation>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cp E" translatesAutoresizingMaskIntoConstraints="NO" id="Vfs-fB-9jy">
-                                <rect key="frame" x="277" y="195" width="37" height="46"/>
+                                <rect key="frame" x="277" y="175" width="37" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="4Ls-Us-UGq"/>
                                     <constraint firstAttribute="height" constant="46" id="OS2-bB-kZY"/>
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QK-8h-f5e">
-                                <rect key="frame" x="280" y="276" width="134" height="18"/>
+                                <rect key="frame" x="280" y="256" width="134" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="jIy-Sb-GdA"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="134" id="ngN-Bi-83j"/>
@@ -249,17 +264,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bjI-bQ-HqW">
-                                <rect key="frame" x="0.0" y="294" width="414" height="442"/>
+                                <rect key="frame" x="0.0" y="274" width="414" height="462"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="700" id="F0d-oo-BJZ"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="trendCell" rowHeight="95" id="SjK-b6-uhd" customClass="trendCell" customModule="LiquidSun" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="95"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SjK-b6-uhd" id="Gw3-kv-wht">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-day" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-tn-anR">
@@ -553,7 +568,7 @@
                                 </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-2F-tgR">
-                                <rect key="frame" x="8" y="199" width="398" height="90"/>
+                                <rect key="frame" x="8" y="179" width="398" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="Zcp-PR-zwS"/>
@@ -642,21 +657,21 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeS-tu-c22">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="some clouds" translatesAutoresizingMaskIntoConstraints="NO" id="TGT-uQ-WGu">
-                                        <rect key="frame" x="157" y="216.33333333333331" width="100" height="100"/>
+                                        <rect key="frame" x="157" y="226.33333333333331" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Azb-nr-d19"/>
                                             <constraint firstAttribute="width" constant="100" id="tfK-gH-8z7"/>
                                         </constraints>
                                     </imageView>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ajj-eq-9En">
-                                        <rect key="frame" x="197" y="351" width="20" height="20"/>
+                                        <rect key="frame" x="197" y="361" width="20" height="20"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrieving weather data..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljQ-Wm-Fb6">
-                                        <rect key="frame" x="6" y="325.66666666666669" width="402" height="20.666666666666686"/>
+                                        <rect key="frame" x="6" y="335.66666666666669" width="402" height="20.666666666666686"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -694,6 +709,7 @@
                             <constraint firstItem="h29-eh-mAs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7jK-UE-UNU"/>
                             <constraint firstItem="JFv-G1-tdP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="7pf-aD-k0t"/>
                             <constraint firstItem="Vfs-fB-9jy" firstAttribute="top" secondItem="oXh-ZI-8Ki" secondAttribute="top" constant="-15" id="84W-MV-66O"/>
+                            <constraint firstItem="i6I-n7-Gfa" firstAttribute="leading" secondItem="wE5-ne-c8Y" secondAttribute="trailing" constant="8" id="9hB-xx-g1L"/>
                             <constraint firstItem="cgS-Jj-ENZ" firstAttribute="centerX" secondItem="asH-au-BbX" secondAttribute="centerX" id="9u4-Nc-gqD"/>
                             <constraint firstItem="cgS-Jj-ENZ" firstAttribute="top" secondItem="Jj9-23-2nA" secondAttribute="bottom" constant="-20" id="ABA-WN-bI9"/>
                             <constraint firstItem="Jj9-23-2nA" firstAttribute="centerX" secondItem="asH-au-BbX" secondAttribute="centerX" id="Am5-HY-JdM"/>
@@ -707,6 +723,7 @@
                             <constraint firstItem="Jj9-23-2nA" firstAttribute="top" secondItem="asH-au-BbX" secondAttribute="bottom" constant="5" id="FJE-Ky-0be"/>
                             <constraint firstItem="AeS-tu-c22" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FxB-Xl-hkr"/>
                             <constraint firstItem="JFv-G1-tdP" firstAttribute="centerX" secondItem="p3b-uI-KbA" secondAttribute="centerX" id="GUe-vM-XQn"/>
+                            <constraint firstItem="Fu4-EQ-55Z" firstAttribute="top" secondItem="p3b-uI-KbA" secondAttribute="bottom" id="Gi2-D0-rvt"/>
                             <constraint firstItem="ry2-J5-tdF" firstAttribute="top" secondItem="Jkc-GL-dEm" secondAttribute="top" id="H6i-7E-jPE"/>
                             <constraint firstItem="ry2-J5-tdF" firstAttribute="centerX" secondItem="SFQ-Ic-NjW" secondAttribute="centerX" id="I9n-wo-HvK"/>
                             <constraint firstItem="bjI-bQ-HqW" firstAttribute="top" secondItem="9QK-8h-f5e" secondAttribute="bottom" id="IVK-9h-F8M"/>
@@ -736,6 +753,8 @@
                             <constraint firstItem="eDw-v6-960" firstAttribute="top" secondItem="OjV-VG-D9k" secondAttribute="bottom" constant="-2" id="WNT-p1-X0c"/>
                             <constraint firstItem="5Sn-R6-iRN" firstAttribute="centerX" secondItem="mNw-BC-7Bi" secondAttribute="centerX" id="Wn1-eL-tbY"/>
                             <constraint firstItem="HNS-t7-nh6" firstAttribute="bottom" secondItem="Dnx-Cf-IKs" secondAttribute="bottom" id="XKB-lR-gGq"/>
+                            <constraint firstItem="sUd-mm-eIH" firstAttribute="top" secondItem="SFQ-Ic-NjW" secondAttribute="bottom" id="Xua-Ht-Vlb"/>
+                            <constraint firstItem="Fu4-EQ-55Z" firstAttribute="centerX" secondItem="p3b-uI-KbA" secondAttribute="centerX" id="ZWH-uq-xWo"/>
                             <constraint firstItem="p8e-YR-1ER" firstAttribute="centerX" secondItem="mNw-BC-7Bi" secondAttribute="centerX" id="aMU-mo-m2H"/>
                             <constraint firstItem="qW7-C5-WyA" firstAttribute="centerX" secondItem="mNw-BC-7Bi" secondAttribute="centerX" id="bbZ-UA-ggp"/>
                             <constraint firstItem="asr-og-I5H" firstAttribute="top" secondItem="OjV-VG-D9k" secondAttribute="top" id="cCV-dy-vSh"/>
@@ -749,6 +768,7 @@
                             <constraint firstItem="gTW-nH-C4n" firstAttribute="top" secondItem="asH-au-BbX" secondAttribute="bottom" constant="-20" id="f4H-15-9aw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h29-eh-mAs" secondAttribute="bottom" id="fOi-Uz-xnO"/>
                             <constraint firstItem="qIQ-PO-KsN" firstAttribute="centerX" secondItem="p3b-uI-KbA" secondAttribute="centerX" id="fbi-hJ-a5m"/>
+                            <constraint firstItem="sUd-mm-eIH" firstAttribute="centerX" secondItem="SFQ-Ic-NjW" secondAttribute="centerX" id="kvX-0G-ffw"/>
                             <constraint firstItem="qW7-C5-WyA" firstAttribute="top" secondItem="qIQ-PO-KsN" secondAttribute="top" id="lDQ-7j-ME1"/>
                             <constraint firstItem="eDw-v6-960" firstAttribute="centerX" secondItem="OjV-VG-D9k" secondAttribute="centerX" id="m3R-Kd-TQy"/>
                             <constraint firstItem="Vfs-fB-9jy" firstAttribute="centerX" secondItem="5Sn-R6-iRN" secondAttribute="centerX" id="mIH-OL-mOC"/>
@@ -757,6 +777,7 @@
                             <constraint firstItem="HNS-t7-nh6" firstAttribute="centerX" secondItem="Jkc-GL-dEm" secondAttribute="centerX" id="nTU-i2-SCk"/>
                             <constraint firstItem="mNw-BC-7Bi" firstAttribute="top" secondItem="JFv-G1-tdP" secondAttribute="top" id="oUU-zs-XGS"/>
                             <constraint firstItem="wE5-ne-c8Y" firstAttribute="top" secondItem="QBP-vA-akD" secondAttribute="bottom" constant="-54" id="ock-1J-BiA"/>
+                            <constraint firstItem="i6I-n7-Gfa" firstAttribute="centerY" secondItem="QBP-vA-akD" secondAttribute="centerY" constant="10" id="p6E-g4-L3w"/>
                             <constraint firstItem="p3b-uI-KbA" firstAttribute="top" secondItem="JFv-G1-tdP" secondAttribute="bottom" constant="-2" id="pTc-Jv-D7I"/>
                             <constraint firstItem="bjI-bQ-HqW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pgt-7B-cVV"/>
                             <constraint firstItem="zXx-tI-0WI" firstAttribute="centerX" secondItem="OjV-VG-D9k" secondAttribute="centerX" id="ph5-kO-Qbd"/>
@@ -813,8 +834,6 @@
                             <mask key="constraints">
                                 <exclude reference="EQz-1w-62l"/>
                                 <exclude reference="fOi-Uz-xnO"/>
-                                <exclude reference="7jK-UE-UNU"/>
-                                <exclude reference="Sg4-s9-zHY"/>
                                 <include reference="T3a-oY-LfY"/>
                                 <include reference="wCS-pB-XJ4"/>
                                 <exclude reference="76I-b8-qMz"/>
@@ -825,6 +844,8 @@
                                 <exclude reference="f4H-15-9aw"/>
                                 <exclude reference="9u4-Nc-gqD"/>
                                 <exclude reference="ABA-WN-bI9"/>
+                                <exclude reference="7jK-UE-UNU"/>
+                                <exclude reference="Sg4-s9-zHY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -849,12 +870,6 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="EQz-1w-62l"/>
-                                <exclude reference="fOi-Uz-xnO"/>
-                                <exclude reference="7jK-UE-UNU"/>
-                                <exclude reference="Sg4-s9-zHY"/>
-                                <include reference="T3a-oY-LfY"/>
-                                <include reference="wCS-pB-XJ4"/>
                                 <exclude reference="WNT-p1-X0c"/>
                                 <exclude reference="m3R-Kd-TQy"/>
                                 <exclude reference="sxW-nh-kdv"/>
@@ -863,14 +878,18 @@
                                 <exclude reference="DdO-dm-Fd4"/>
                                 <exclude reference="md0-vf-nDI"/>
                                 <exclude reference="ph5-kO-Qbd"/>
+                                <exclude reference="EQz-1w-62l"/>
+                                <exclude reference="fOi-Uz-xnO"/>
+                                <include reference="T3a-oY-LfY"/>
+                                <include reference="wCS-pB-XJ4"/>
                                 <exclude reference="1P0-YB-B9C"/>
                                 <exclude reference="BPe-C6-W2R"/>
                                 <exclude reference="QoE-2k-axq"/>
                                 <exclude reference="eJb-06-Bwr"/>
-                                <exclude reference="NyQ-gY-ThP"/>
-                                <exclude reference="cCV-dy-vSh"/>
                                 <exclude reference="tnb-9y-yKj"/>
                                 <exclude reference="vGY-tA-hLR"/>
+                                <exclude reference="NyQ-gY-ThP"/>
+                                <exclude reference="cCV-dy-vSh"/>
                                 <exclude reference="76I-b8-qMz"/>
                                 <exclude reference="UdM-jv-mKg"/>
                                 <exclude reference="Am5-HY-JdM"/>
@@ -879,6 +898,8 @@
                                 <exclude reference="f4H-15-9aw"/>
                                 <exclude reference="9u4-Nc-gqD"/>
                                 <exclude reference="ABA-WN-bI9"/>
+                                <exclude reference="7jK-UE-UNU"/>
+                                <exclude reference="Sg4-s9-zHY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -945,7 +966,9 @@
                         <outlet property="currentVisibilityLabel" destination="asr-og-I5H" id="F4N-te-5tA"/>
                         <outlet property="currentWindLabel" destination="mNw-BC-7Bi" id="BHO-xl-kSX"/>
                         <outlet property="dewPointLeadingEdge" destination="sxW-nh-kdv" id="RWE-Sr-jqM"/>
+                        <outlet property="feelsLikeImage" destination="Fu4-EQ-55Z" id="liL-Ne-DIG"/>
                         <outlet property="forecastView" destination="6G1-2F-tgR" id="38K-T1-frq"/>
+                        <outlet property="humidityImage" destination="sUd-mm-eIH" id="Ni8-7a-FzY"/>
                         <outlet property="iconImage" destination="QBP-vA-akD" id="Z74-j0-O04"/>
                         <outlet property="loadLabel" destination="ljQ-Wm-Fb6" id="M3J-sW-xBO"/>
                         <outlet property="loadingImage" destination="TGT-uQ-WGu" id="BJn-vx-tIm"/>
@@ -953,6 +976,7 @@
                         <outlet property="loadingView" destination="AeS-tu-c22" id="5VS-RC-0pm"/>
                         <outlet property="locationButton" destination="GHg-Ub-Myh" id="OJf-Bz-qtR"/>
                         <outlet property="searchButton" destination="CRX-ub-fbg" id="CKA-2s-1Xh"/>
+                        <outlet property="swingImage" destination="i6I-n7-Gfa" id="PS6-gM-5GX"/>
                         <outlet property="trendTable" destination="bjI-bQ-HqW" id="jpI-mW-CDZ"/>
                         <outlet property="visibilityLeadingEdge" destination="eJb-06-Bwr" id="Cu5-zx-76C"/>
                         <outlet property="windLeadingEdge" destination="cOS-dh-AZ2" id="8Sj-CF-TyW"/>
@@ -977,7 +1001,7 @@
             <objects>
                 <viewController id="EtH-Aa-ogV" customClass="lsSearchResultsView" customModule="LiquidSun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="emp-xp-XFq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHK-Xa-ANw">
@@ -1002,7 +1026,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-ks-Orz">
-                                <rect key="frame" x="0.0" y="56" width="414" height="616"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="604"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="Xgf-3w-xYZ" customClass="searchCell" customModule="LiquidSun" customModuleProvider="target">
@@ -1069,7 +1093,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="04j-dC-4At" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="YUW-k6-Vow">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.11764705882352941" green="0.30196078431372547" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -1088,7 +1112,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TTx-zr-vx0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="g1i-iv-cRE">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1176470588" green="0.29803921570000003" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -1106,17 +1130,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear-day" width="75" height="75"/>
+        <image name="clear-day" width="100" height="100"/>
         <image name="cloudBack" width="959" height="520"/>
-        <image name="cp E" width="29.557895660400391" height="36.378948211669922"/>
-        <image name="hightemp" width="11.489361763000488" height="26.808509826660156"/>
+        <image name="cp E" width="39" height="48"/>
+        <image name="hightemp" width="15" height="35"/>
+        <image name="horiz_cold1" width="40" height="7"/>
+        <image name="horiz_equal" width="40" height="7"/>
         <image name="locate" width="18" height="18"/>
-        <image name="lowtemp" width="11.489361763000488" height="26.808509826660156"/>
+        <image name="lowtemp" width="15" height="35"/>
         <image name="pbds" width="377" height="60"/>
         <image name="search" width="25" height="25"/>
-        <image name="some clouds" width="150" height="150"/>
-        <image name="sunny" width="75" height="75"/>
-        <image name="sunrise" width="52.5" height="52.5"/>
-        <image name="sunset" width="52.5" height="52.5"/>
+        <image name="some clouds" width="100" height="100"/>
+        <image name="sunny" width="100" height="100"/>
+        <image name="sunrise" width="70" height="70"/>
+        <image name="sunset" width="70" height="70"/>
+        <image name="vert_equal" width="10" height="54"/>
     </resources>
 </document>

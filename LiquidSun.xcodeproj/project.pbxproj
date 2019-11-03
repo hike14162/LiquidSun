@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52094ABB236F0D1E00651B04 /* lsTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52094ABA236F0D1E00651B04 /* lsTrend.swift */; };
 		521702C521E557400091A3F5 /* lsLocationSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702C421E557400091A3F5 /* lsLocationSelectDelegate.swift */; };
 		521702C721E5574C0091A3F5 /* lsLocationSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702C621E5574C0091A3F5 /* lsLocationSelectDelegate.swift */; };
 		521702CA21E5AAB50091A3F5 /* lsWeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521702C921E5AAB50091A3F5 /* lsWeatherForecast.swift */; };
@@ -104,6 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52094ABA236F0D1E00651B04 /* lsTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsTrend.swift; sourceTree = "<group>"; };
 		521702C421E557400091A3F5 /* lsLocationSelectDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lsLocationSelectDelegate.swift; sourceTree = "<group>"; };
 		521702C621E5574C0091A3F5 /* lsLocationSelectDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = lsLocationSelectDelegate.swift; path = LiquidSun/Delegates/lsLocationSelectDelegate.swift; sourceTree = SOURCE_ROOT; };
 		521702C821E55BC60091A3F5 /* json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = json.json; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				528AD023212A39830094374E /* lsWeatherReport.swift */,
 				521702C921E5AAB50091A3F5 /* lsWeatherForecast.swift */,
 				528AD027212B6E820094374E /* lsEnums.swift */,
+				52094ABA236F0D1E00651B04 /* lsTrend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				528AD006212A35430094374E /* Sunshine.swift in Sources */,
 				528AD024212A39830094374E /* lsWeatherReport.swift in Sources */,
 				52A1DB96213F0F2100B7B904 /* lsSearchResultsTable.swift in Sources */,
+				52094ABB236F0D1E00651B04 /* lsTrend.swift in Sources */,
 				528AD004212A35430094374E /* AppDelegate.swift in Sources */,
 				528AD02C212C9C690094374E /* lsTrendTable.swift in Sources */,
 				52F39FC221EFA916002DDE94 /* lsSearchButton.swift in Sources */,

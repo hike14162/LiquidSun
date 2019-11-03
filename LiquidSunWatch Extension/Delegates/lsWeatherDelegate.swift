@@ -4,5 +4,5 @@ protocol  lsWeatherDelegate {
     func networkReachable()
     
     //MARK: - Required method definition
-    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport], averageTemp: Double)
+    func weatherRetrieved(id: String, weatherDays: [lsWeatherReport], averages: lsTrend)
 }

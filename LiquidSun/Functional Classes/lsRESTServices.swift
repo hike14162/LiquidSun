@@ -34,7 +34,7 @@ final class lsRESTServices
         let lsData = lsModel.sharedInstance
         let calendar = Calendar.current
         let adjustedDate = calendar.date(byAdding: .second, value: lsData.GMTOffsetSeconds, to: date)
-        print("date: \(date)  Adjust: \(adjustedDate)")
+       // print("date: \(date)  Adjust: \(adjustedDate)")
         return adjustedDate
     }
     

@@ -11,7 +11,8 @@ class lsWeather: NSObject {
     let historyDays = 5
     
     var totalPastTemp = 0.0
-
+    var averages = lsTrend()
+    
 // MARK: - Overrides
     override init() {
         super.init()
@@ -25,13 +26,15 @@ class lsWeather: NSObject {
     func addWeatherResult(weatherDay: lsWeatherReport, isForecast: Bool) {
         if !isForecast {
             totalPastTemp += weatherDay.temperature
+            averages.addWeatherPoint(temp: weatherDay.temperature, humidity: weatherDay.humidity, feelsLike: weatherDay.apparentTemperature)
         }
         
         self.data.addWeatherDay(weather: weatherDay)
         if (self.data.weatherDays.count == (self.historyDays + 1)) {
             if let dlgt = self.delegate {
-                dlgt.weatherRetrieved(id: id, weatherDays: self.data.weatherDays, averageTemp: totalPastTemp / Double(self.historyDays))
+                dlgt.weatherRetrieved(id: id, weatherDays: self.data.weatherDays, averages: averages)
                 self.totalPastTemp = 0
+                averages = lsTrend()
             }
         }
     }
