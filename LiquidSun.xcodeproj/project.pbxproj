@@ -53,6 +53,8 @@
 		528AD028212B6E820094374E /* lsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD027212B6E820094374E /* lsEnums.swift */; };
 		528AD02A212B83C30094374E /* lsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD029212B83C30094374E /* lsModel.swift */; };
 		528AD02C212C9C690094374E /* lsTrendTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AD02B212C9C690094374E /* lsTrendTable.swift */; };
+		52A014BA23779DE70089F409 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A014B923779DE70089F409 /* GameKit.framework */; };
+		52A014BC23779DF80089F409 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A014BB23779DF80089F409 /* StoreKit.framework */; };
 		52A1DB96213F0F2100B7B904 /* lsSearchResultsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1DB95213F0F2100B7B904 /* lsSearchResultsTable.swift */; };
 		52A1DB98213F0F4100B7B904 /* lsSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1DB97213F0F4100B7B904 /* lsSearchResultsView.swift */; };
 		52B192B3213F3B5900B03723 /* lsSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B192B2213F3B5900B03723 /* lsSearchDelegate.swift */; };
@@ -156,6 +158,8 @@
 		528AD027212B6E820094374E /* lsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsEnums.swift; sourceTree = "<group>"; };
 		528AD029212B83C30094374E /* lsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsModel.swift; sourceTree = "<group>"; };
 		528AD02B212C9C690094374E /* lsTrendTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsTrendTable.swift; sourceTree = "<group>"; };
+		52A014B923779DE70089F409 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		52A014BB23779DF80089F409 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		52A1DB95213F0F2100B7B904 /* lsSearchResultsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchResultsTable.swift; sourceTree = "<group>"; };
 		52A1DB97213F0F4100B7B904 /* lsSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchResultsView.swift; sourceTree = "<group>"; };
 		52B192B2213F3B5900B03723 /* lsSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lsSearchDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A014BA23779DE70089F409 /* GameKit.framework in Frameworks */,
+				52A014BC23779DF80089F409 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +299,7 @@
 				521B62742176CEC600E71B45 /* LiquidSunWatch */,
 				521B62832176CEC900E71B45 /* LiquidSunWatch Extension */,
 				528AD001212A35430094374E /* Products */,
+				52A014B823779DE70089F409 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -322,6 +329,15 @@
 				528AD00F212A35460094374E /* Info.plist */,
 			);
 			path = LiquidSun;
+			sourceTree = "<group>";
+		};
+		52A014B823779DE70089F409 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52A014BB23779DF80089F409 /* StoreKit.framework */,
+				52A014B923779DE70089F409 /* GameKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		52A1DB92213F044B00B7B904 /* Models */ = {
@@ -618,9 +634,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 46527JQ8T6;
 				IBSC_MODULE = LiquidSunWatch_Extension;
 				INFOPLIST_FILE = LiquidSunWatch/Info.plist;
+				MARKETING_VERSION = 1.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun.watchkitapp;
@@ -640,9 +658,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 46527JQ8T6;
 				IBSC_MODULE = LiquidSunWatch_Extension;
 				INFOPLIST_FILE = LiquidSunWatch/Info.plist;
+				MARKETING_VERSION = 1.6;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -659,6 +679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 46527JQ8T6;
 				INFOPLIST_FILE = "LiquidSunWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -666,6 +687,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun.watchkitapp.watchkitextension;
@@ -683,6 +705,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 46527JQ8T6;
 				INFOPLIST_FILE = "LiquidSunWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -690,6 +713,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.6;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -822,12 +846,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 46527JQ8T6;
 				INFOPLIST_FILE = LiquidSun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -845,12 +871,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 46527JQ8T6;
 				INFOPLIST_FILE = LiquidSun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thecarrnation.LiquidSun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
